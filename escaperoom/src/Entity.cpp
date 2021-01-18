@@ -10,6 +10,7 @@ void Entity::add(std::shared_ptr<Entity> e) {
 }
 
 std::shared_ptr<Entity> Entity::remove(const std::string& name) {
+	if (!_open) return;
 	if (inside.count(name)) {
 		std::shared_ptr<Entity> e = move(inside[name]);
 		inside.erase(name);
@@ -23,9 +24,6 @@ std::shared_ptr<Entity> Entity::remove(const std::string& name) {
 		}
 		return move(e);
 	}
-	
 }
 
-void Entity::open() {
-	_open = true;
-}
+void Entity::open() {}
