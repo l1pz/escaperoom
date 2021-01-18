@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "escaperoom", "escaperoom\escaperoom.vcxproj", "{36F25D4E-7C7B-4EA1-AB9D-E629A22AE136}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		dev|x64 = dev|x64
+		prod|x64 = prod|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36F25D4E-7C7B-4EA1-AB9D-E629A22AE136}.dev|x64.ActiveCfg = dev|x64
+		{36F25D4E-7C7B-4EA1-AB9D-E629A22AE136}.dev|x64.Build.0 = dev|x64
+		{36F25D4E-7C7B-4EA1-AB9D-E629A22AE136}.prod|x64.ActiveCfg = prod|x64
+		{36F25D4E-7C7B-4EA1-AB9D-E629A22AE136}.prod|x64.Build.0 = prod|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73E0555A-90A5-46B7-8CA5-E2E25A031497}
+	EndGlobalSection
+EndGlobal
