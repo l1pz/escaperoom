@@ -18,6 +18,7 @@ public:
 	void check();
 	void add(std::shared_ptr<Entity> e);
 	std::shared_ptr<Entity> remove(const std::string& name);
+	void open();
 
 };
 
