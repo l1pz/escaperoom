@@ -5,6 +5,6 @@ void Entity::check() {
 	std::cout << _description << std::endl;
 }
 
-void Entity::add(std::unique_ptr<Entity>& e) {
-	inside.insert(move(e));
+void Entity::add(std::shared_ptr<Entity> e) {
+	inside[e->name()] = move(e);
 }
