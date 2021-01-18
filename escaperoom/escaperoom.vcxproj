@@ -87,14 +87,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Entity.cpp" />
-    <ClCompile Include="src\Item.cpp" />
-    <ClCompile Include="src\Room.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Entity.h" />
-    <ClInclude Include="src\Item.h" />
-    <ClInclude Include="src\Room.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

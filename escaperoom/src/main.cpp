@@ -1,12 +1,20 @@
+#ifdef _WIN32
 #include <Windows.h>
+#endif
 
 #include "Entity.h"
 
 
 int main() {
+#ifdef _WIN32
 	SetConsoleCP(65001); // set input console codepage to utf8
 	SetConsoleOutputCP(65001); // set output console codepage to utf8
-	Entity e;
-	e.check();
+#endif
+	std::unique_ptr<Entity> spoon = std::make_unique<Entity>("spoon");
+	std::unique_ptr<Entity> fork = std::make_unique<Entity>("fork");
+	std::unique_ptr<Entity> table = std::make_unique<Entity>("table");
+	std::unique_ptr<Entity> cabinet = std::make_unique<Entity>("cabinet");
+	table->add(spoon);
+	table->add(fork);
 	return 0;
 }
