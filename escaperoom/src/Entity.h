@@ -7,7 +7,7 @@ class Entity
 private:
 	std::string _name;
 	std::string _description;
-	bool _open{ false };
+	bool _unlocked{ true };
 
 public:
 	std::unordered_map<std::string, std::shared_ptr<Entity>> inside;
