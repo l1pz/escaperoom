@@ -17,6 +17,7 @@ public:
 	const std::string& name() const { return _name; };
 	void check();
 	void add(std::shared_ptr<Entity> e);
+	std::shared_ptr<Entity> remove(const std::string& name);
 
 };
 
