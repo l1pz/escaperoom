@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #include <string>
 #include <unordered_set>
 #include <memory>
@@ -8,7 +8,7 @@ private:
 	std::string _description;
 
 public:
-	Entity() : _description(u8"Ennek a t·rgynak nincs leÌr·sa...") {};
+	Entity() : _description("Ennek a t√°rgynak nincs le√≠r√°sa...") {};
 	Entity(const std::string_view description) : _description(description) {};
 	void check();
 
