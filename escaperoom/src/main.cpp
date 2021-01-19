@@ -5,7 +5,7 @@
 #include "base/Room.h"
 #include "base/StorageItem.h"
 #include "base/LiftableItem.h"
-
+#include "Player.h"
 
 int main() {
 #ifdef _WIN32
@@ -20,6 +20,9 @@ int main() {
 	livingRoom->addItem(table);
 	table->addItem(chest);
 	chest->addItem(money);
-	auto x = livingRoom->getItem("money");
+	
+	Player p;
+	while (true) p.input();
+
 	return 0;
 }
