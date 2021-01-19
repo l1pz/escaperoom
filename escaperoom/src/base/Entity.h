@@ -14,7 +14,7 @@ public:
 	Entity(const std::string_view name, const std::string_view description) :
 		_name{ name }, _description{ description } {};
 	inline const std::string& name() const { return _name; };
-	void check();
+	virtual void check();
 	
 };
 

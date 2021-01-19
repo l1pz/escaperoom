@@ -86,15 +86,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Item.cpp" />
-    <ClCompile Include="src\Room.cpp" />
-    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\base\Item.cpp" />
+    <ClCompile Include="src\base\Room.cpp" />
+    <ClCompile Include="src\base\Entity.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\base\StorageItem.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Item.h" />
-    <ClInclude Include="src\Room.h" />
-    <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\base\Item.h" />
+    <ClInclude Include="src\base\Room.h" />
+    <ClInclude Include="src\base\Entity.h" />
+    <ClInclude Include="src\base\StorageItem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
