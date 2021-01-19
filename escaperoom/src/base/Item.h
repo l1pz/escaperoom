@@ -1,8 +1,7 @@
 #pragma once
 #include "Entity.h"
 class Item :
-    public Entity,
-    public std::enable_shared_from_this<Item>
+    public Entity
 {
 public:
   using Entity::Entity;

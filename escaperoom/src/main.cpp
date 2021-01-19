@@ -3,8 +3,8 @@
 #endif
 
 #include "base/Room.h"
-#include "base/Item.h"
 #include "base/StorageItem.h"
+#include "base/LiftableItem.h"
 
 
 int main() {
@@ -15,7 +15,7 @@ int main() {
 	auto livingRoom = std::make_shared<Room>("livingroom", "livingroom");
 	auto table = std::make_shared<StorageItem>("table", "table");
 	auto chest = std::make_shared<StorageItem>("chest", "chest");
-	auto money = std::make_shared<Item>("money", "money");
+	auto money = std::make_shared<LiftableItem>("money", "money");
 
 	livingRoom->addItem(table);
 	table->addItem(chest);

@@ -2,7 +2,6 @@
 
 std::optional<std::shared_ptr<Item>> StorageItem::removeItem(const std::string& name)
 {
-	if (this->name() == name) return move(shared_from_this());
 	std::optional<std::shared_ptr<Item>> i;
 	for (const auto& item : _items) {
 		i = item.second->removeItem(name);
