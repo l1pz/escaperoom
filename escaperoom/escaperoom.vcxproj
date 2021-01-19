@@ -86,11 +86,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Item.cpp" />
     <ClCompile Include="src\Room.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Item.h" />
     <ClInclude Include="src\Room.h" />
     <ClInclude Include="src\Entity.h" />
   </ItemGroup>

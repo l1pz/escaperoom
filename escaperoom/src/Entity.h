@@ -2,6 +2,7 @@
 #include <string>
 #include <unordered_map>
 #include <memory>
+#include <optional>
 class Entity
 {
 private:
@@ -17,7 +18,7 @@ public:
 	const std::string& name() const { return _name; };
 	void check();
 	void add(std::shared_ptr<Entity> e);
-	std::shared_ptr<Entity> remove(const std::string& name);
+	std::optional<std::shared_ptr<Entity>> remove(const std::string& name);
 	virtual void open();
 
 };
