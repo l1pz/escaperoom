@@ -13,15 +13,11 @@ void Room::addItem(std::shared_ptr<Item> item) {
 std::optional<std::shared_ptr<Item>> Room::removeItem(const std::string& name) {
 	std::optional<std::shared_ptr<Item>> i;
 	for (auto& item : _items) {
-		if (item.first == name) {
-			i = move(_items[name]);
+		i = item.second->removeItem(name);
+		if (i) {
 			_items.erase(name);
 			return move(i);
-		}
-		else {
-			i = item.second->removeItem(name);
-			if (i) return move(i);
-		}
+		};
 	}
 	return move(i);
 }

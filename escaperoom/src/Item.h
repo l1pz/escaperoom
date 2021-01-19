@@ -1,7 +1,8 @@
 #pragma once
 #include "Entity.h"
 class Item :
-    public Entity
+    public Entity,
+    public std::enable_shared_from_this<Item>
 {
 private:
   std::unordered_map<std::string, std::shared_ptr<Item>> _items;

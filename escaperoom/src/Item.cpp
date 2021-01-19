@@ -2,16 +2,13 @@
 
 std::optional<std::shared_ptr<Item>> Item::removeItem(const std::string& name)
 {
+	if (this->name() == name) return move(shared_from_this());
 	std::optional<std::shared_ptr<Item>> i;
-	if (_items.count(name)) {
-		i = move(_items[name]);
-		_items.erase(name);
-		return move(i);
-	}
-	else {
-		for (const auto& item : _items) {
-			i = item.second->removeItem(name);
-			if (i) return move(i);
+	for (const auto& item : _items) {
+		i = item.second->removeItem(name);
+		if (i) {
+			_items.erase(name);
+			return move(i);
 		}
 	}
 	return move(i);
