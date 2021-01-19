@@ -20,6 +20,6 @@ int main() {
 	livingRoom->addItem(table);
 	table->addItem(chest);
 	chest->addItem(money);
-	auto x = livingRoom->removeItem("money");
+	auto x = livingRoom->getItem("money");
 	return 0;
 }

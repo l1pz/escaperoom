@@ -8,6 +8,7 @@ private:
 public:
   using Item::Item;
   std::optional<std::shared_ptr<Item>> removeItem(const std::string& name) override;
+  std::optional<std::shared_ptr<Item>> getItem(const std::string& name) override;
   void addItem(std::shared_ptr<Item> item) override;
 };
 

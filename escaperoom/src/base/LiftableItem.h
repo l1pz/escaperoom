@@ -2,8 +2,7 @@
 #include "Item.h"
 #include <memory>
 class LiftableItem :
-	public Item,
-	public std::enable_shared_from_this<LiftableItem>
+	public Item
 {
 public:
 	using Item::Item;

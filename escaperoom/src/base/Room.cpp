@@ -21,3 +21,12 @@ std::optional<std::shared_ptr<Item>> Room::removeItem(const std::string& name) {
 	}
 	return move(i);
 }
+
+std::optional<std::shared_ptr<Item>> Room::getItem(const std::string& name) {
+	std::optional<std::shared_ptr<Item>> i;
+	for (auto& item : _items) {
+		i = item.second->getItem(name);
+		if (i) break;
+	}
+	return move(i);
+}
