@@ -16,9 +16,3 @@ std::optional<std::shared_ptr<Item>> StorageItem::removeItem(const std::string& 
 void StorageItem::addItem(std::shared_ptr<Item> item) {
 	_items[item->name()] = move(item);
 }
-
-void StorageItem::unlock(const Item& key) {
-	if (key == *_key.value()) {
-		_locked = false;
-	}
-}
