@@ -33,6 +33,7 @@ void Player::input() {
 		}
 		if (_actions.count(action)) {
 			_actions[action](items);
+			std::cout << std::endl;
 		}
 		else {
 			std::cout << "Nincs ilyen parancs!" << std::endl;
