@@ -19,19 +19,19 @@ std::vector<std::string> split(const std::string& str)
 
 std::unordered_map<std::string,
 	std::function<void(const std::vector<std::string>& items)>> Player::_actions{
-		{"n√©zd", [](std::vector<std::string> items) {std::cout << "mit n√©zel?"; }}
+		{"nÈzd", [](std::vector<std::string> items) {std::cout << "mit nÈzel?"; }}
 };
 
 void Player::input() const {
 	std::string inputText;
 	std::getline(std::cin, inputText);
 	std::cout << inputText << std::endl;
-	auto splitted{ split(inputText) };
-	if (splitted.size() > 0) {
-		auto action{ splitted[0] };
+	auto splitText{ split(inputText) };
+	if (splitText.size() > 0) {
+		const auto action{ splitText[0] };
 		std::vector<std::string> items;
-		if (splitted.size() > 1) {
-			items = std::vector<std::string>(splitted.begin() + 1, splitted.end());
+		if (splitText.size() > 1) {
+			items = std::vector<std::string>(splitText.begin() + 1, splitText.end());
 		}
 		if (_actions.count(action)) {
 			_actions[action](items);

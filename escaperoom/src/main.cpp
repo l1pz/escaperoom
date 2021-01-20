@@ -16,7 +16,6 @@ int main() {
 	SetConsoleCP(28592);
 	SetConsoleOutputCP(28592);
 #endif
-	std::cout << "ÂÁrvíztûrõ tükörfúrógép";
 	auto livingRoom = std::make_shared<Room>("livingroom", "livingroom");
 	auto table = std::make_shared<StorageItem>("table", "table");
 	auto chest = std::make_shared<StorageItem>("chest", "chest");
