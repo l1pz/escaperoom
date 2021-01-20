@@ -12,7 +12,7 @@ void Room::addItem(std::shared_ptr<Item> item) {
 
 std::optional<std::shared_ptr<Item>> Room::removeItem(const std::string& name) {
 	std::optional<std::shared_ptr<Item>> i;
-	for (auto& [name, item] : _items) {
+	for (auto& [itemName, item] : _items) {
 		i = item->removeItem(name);
 		if (i) {
 			_items.erase(name);
@@ -24,7 +24,7 @@ std::optional<std::shared_ptr<Item>> Room::removeItem(const std::string& name) {
 
 std::optional<std::shared_ptr<Item>> Room::getItem(const std::string& name) {
 	std::optional<std::shared_ptr<Item>> i;
-	for (auto& [name, item] : _items) {
+	for (auto& [itemName, item] : _items) {
 		i = item->getItem(name);
 		if (i) break;
 	}

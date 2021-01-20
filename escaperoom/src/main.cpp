@@ -16,17 +16,15 @@ int main() {
 	SetConsoleCP(28592);
 	SetConsoleOutputCP(28592);
 #endif
-	auto livingRoom = std::make_shared<Room>("livingroom", "livingroom");
-	auto table = std::make_shared<StorageItem>("table", "table");
-	auto chest = std::make_shared<StorageItem>("chest", "chest");
-	const auto money = std::make_shared<LiftableItem>("money", "money");
+	auto livingRoom = std::make_shared<Room>("nappali", "Egy nappaliban állok. Elõttem van egy asztal.");
+	auto table = std::make_shared<StorageItem>("asztal", "Az asztalon egy ládika található.");
+	auto chest = std::make_shared<StorageItem>("ládika", "Az ládikában egy kis pénz lapul.");
+	const auto money = std::make_shared<LiftableItem>("pénz", "A pénz kissé gyûrött.");
 
 	livingRoom->addItem(table);
 	table->addItem(chest);
 	chest->addItem(money);
 	
-	Player p;
+	Player p{livingRoom};
 	while (true) p.input();
-
-	return 0;
 }

@@ -4,6 +4,7 @@
 #include <sstream>
 #include <algorithm>
 #include <iterator>
+#include <utility>
 #include <vector>
 #include "Player.h"
 
@@ -17,17 +18,14 @@ std::vector<std::string> split(const std::string& str)
 	return splitStr;
 }
 
-std::unordered_map<std::string,
-	std::function<void(const std::vector<std::string>& items)>> Player::_actions{
-		{"nézd", [](std::vector<std::string> items) {std::cout << "mit nézel?"; }}
-};
 
-void Player::input() const {
+Player::Player(std::shared_ptr<Room> currentRoom) : _currentRoom{std::move(currentRoom)} {}
+
+void Player::input() {
 	std::string inputText;
 	std::getline(std::cin, inputText);
-	std::cout << inputText << std::endl;
 	auto splitText{ split(inputText) };
-	if (splitText.size() > 0) {
+	if (!splitText.empty()) {
 		const auto action{ splitText[0] };
 		std::vector<std::string> items;
 		if (splitText.size() > 1) {
@@ -39,7 +37,6 @@ void Player::input() const {
 		else {
 			std::cout << "Nincs ilyen parancs!" << std::endl;
 		}
-		
 	}
 	else {
 		std::cout << "Adj meg valami parancsot!" << std::endl;
