@@ -19,6 +19,20 @@ std::vector<std::string> split(const std::string& str)
 }
 
 
+void Player::_check(const std::vector<std::string>& items) const {
+	if (items.empty()) _currentRoom->check();
+	else if (items.size() > 1) std::cout << "Egyszerre csak egy tárgyat tudok megnézni.";
+	else {
+		auto result{ _currentRoom->getItem(items[0]) };
+		if (result.has_value()) {
+			result->get()->check();
+		}
+		else {
+			std::cout << "Nem látok ilyen tárgyat.";
+		}
+	}
+}
+
 Player::Player(std::shared_ptr<Room> currentRoom) : _currentRoom{std::move(currentRoom)} {}
 
 void Player::input() {
