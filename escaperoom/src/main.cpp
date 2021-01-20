@@ -1,3 +1,6 @@
+#include <locale>
+#include <iostream>
+
 #ifdef _WIN32
 #include <Windows.h>
 #endif
@@ -8,14 +11,16 @@
 #include "Player.h"
 
 int main() {
+	std::locale::global(std::locale("hu"));
 #ifdef _WIN32
-	SetConsoleCP(65001); // set input console codepage to utf8
-	SetConsoleOutputCP(65001); // set output console codepage to utf8
+	SetConsoleCP(28592);
+	SetConsoleOutputCP(28592);
 #endif
+	std::cout << "ÂÁrvíztûrõ tükörfúrógép";
 	auto livingRoom = std::make_shared<Room>("livingroom", "livingroom");
 	auto table = std::make_shared<StorageItem>("table", "table");
 	auto chest = std::make_shared<StorageItem>("chest", "chest");
-	auto money = std::make_shared<LiftableItem>("money", "money");
+	const auto money = std::make_shared<LiftableItem>("money", "money");
 
 	livingRoom->addItem(table);
 	table->addItem(chest);

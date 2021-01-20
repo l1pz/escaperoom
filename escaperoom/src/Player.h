@@ -1,13 +1,17 @@
 #pragma once
+#include <unordered_map>
+#include <functional>
 #include "base/StorageItem.h"
+#include "base/Room.h"
 class Player
 {
 private:
+	std::shared_ptr<Room> currentRoom;
 	StorageItem _backpack{"backpack", "backpack"};
+	static std::unordered_map<std::string,
+		std::function<void(const std::vector<std::string>& items)>> _actions;
 
-private:
-	void _processInput(const std::string_view action, const std::vector<std::string>& items);
 public:
-	void input();
+	void input() const;
 };
 

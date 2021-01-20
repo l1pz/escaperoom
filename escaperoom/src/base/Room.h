@@ -17,10 +17,9 @@ private:
 
 public:
   using Entity::Entity;
-  void addExit(const Direction direction, std::shared_ptr<Room> exit);
+  void addExit(Direction direction, std::shared_ptr<Room> exit);
   void addItem(std::shared_ptr<Item> item);
   std::optional<std::shared_ptr<Item>> removeItem(const std::string& name);
   std::optional<std::shared_ptr<Item>> getItem(const std::string& name);
-  
 };
 

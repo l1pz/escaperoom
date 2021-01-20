@@ -3,24 +3,24 @@
 std::optional<std::shared_ptr<Item>> StorageItem::removeItem(const std::string& name)
 {
 	std::optional<std::shared_ptr<Item>> i;
-	for (const auto& item : _items) {
-		i = item.second->removeItem(name);
+	for (const auto& [name, item] : _items) {
+		i = item->removeItem(name);
 		if (i) {
 			_items.erase(name);
-			return move(i);
+			return i;
 		}
 	}
-	return move(i);
+	return i;
 }
 
 std::optional<std::shared_ptr<Item>> StorageItem::getItem(const std::string& name)
 {
-	std::optional<std::shared_ptr<Item>> i{Item::getItem(name)};
-	for (const auto& item : _items) {
+	auto i{Item::getItem(name)};
+	for (const auto& [name, item] : _items) {
 		if (i) break;
-		i = item.second->getItem(name);
+		i = item->getItem(name);
 	}
-	return move(i);
+	return i;
 }
 
 void StorageItem::addItem(std::shared_ptr<Item> item) {
