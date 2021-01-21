@@ -1,9 +1,7 @@
 #pragma once
-#include <cassert>
-#include "Entity.h"
-#include "Item.h"
+#include "StorageItem.h"
 class Room :
-    public Entity
+    public StorageItem
 {
 
 public:
@@ -12,14 +10,12 @@ public:
   };
 
 private:
-  std::unordered_map<std::string, std::shared_ptr<Item>> _items;
   std::unordered_map<Direction, std::shared_ptr<Room>> _exits;
 
 public:
-  using Entity::Entity;
+  using StorageItem::StorageItem;
   void addExit(Direction direction, std::shared_ptr<Room> exit);
-  void addItem(std::shared_ptr<Item> item);
-  std::optional<std::shared_ptr<Item>> removeItem(const std::string& name);
-  std::optional<std::shared_ptr<Item>> getItem(const std::string& name);
+  // we need getItem function because we have to make sure room doesn't return itself like the rest of the items
+  std::optional<std::shared_ptr<Item>> getItem(const std::string& name) override; 
 };
 

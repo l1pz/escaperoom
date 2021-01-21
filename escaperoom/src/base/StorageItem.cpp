@@ -1,6 +1,14 @@
 #include "StorageItem.h"
 
 #include <algorithm>
+#include <iostream>
+
+void StorageItem::check() {
+	Item::check();
+	for(const auto& [name, itemDesc] : _itemDescriptions) {
+		std::cout << " " << itemDesc;
+	}
+}
 
 std::optional<std::shared_ptr<Item>> StorageItem::removeItem(const std::string& name)
 {
@@ -9,6 +17,7 @@ std::optional<std::shared_ptr<Item>> StorageItem::removeItem(const std::string& 
 		i = item->removeItem(name);
 		if (i) {
 			_items.erase(name);
+			_itemDescriptions.erase(name);
 			break;
 		}
 	}
@@ -25,7 +34,8 @@ std::optional<std::shared_ptr<Item>> StorageItem::getItem(const std::string& nam
 	return i;
 }
 
-void StorageItem::addItem(std::shared_ptr<Item> item) {
+void StorageItem::addItem(std::shared_ptr<Item> item, const std::string_view description) {
+	_itemDescriptions[item->name()] = description;
 	_items[item->name()] = move(item);
 }
 

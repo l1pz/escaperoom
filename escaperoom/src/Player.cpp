@@ -40,7 +40,7 @@ void Player::_pickup(const std::vector<std::string>& items) {
 		auto result{ _currentRoom->getItem(items[0]) };
 		if (result.has_value()) {
 			if(result.value()->isLiftable()) {
-				_backpack.addItem(_currentRoom->removeItem(items[0]).value());
+				_backpack.addItem(_currentRoom->removeItem(items[0]).value(), "");
 				std::cout << "Felvetted ezt: " << result.value()->name() << ".";
 			} else {
 				std::cout << "Ezt a tárgyat nem tudom felvenni.";

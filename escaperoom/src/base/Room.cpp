@@ -1,4 +1,6 @@
 #include "Room.h"
+
+#include <cassert>
 #include <memory>
 
 void Room::addExit(const Direction direction, std::shared_ptr<Room> exit) {
@@ -6,27 +8,11 @@ void Room::addExit(const Direction direction, std::shared_ptr<Room> exit) {
 	_exits[direction] = move(exit);
 }
 
-void Room::addItem(std::shared_ptr<Item> item) {
-	_items[item->name()] = move(item);
-}
-
-std::optional<std::shared_ptr<Item>> Room::removeItem(const std::string& name) {
-	std::optional<std::shared_ptr<Item>> i;
-	for (auto& [itemName, item] : _items) {
-		i = item->removeItem(name);
-		if (i) {
-			_items.erase(name);
-			return i;
-		};
-	}
-	return i;
-}
-
 std::optional<std::shared_ptr<Item>> Room::getItem(const std::string& name) {
 	std::optional<std::shared_ptr<Item>> i;
-	for (auto& [itemName, item] : _items) {
-		i = item->getItem(name);
+	for (const auto& [itemName, item] : _items) {
 		if (i) break;
+		i = item->getItem(name);
 	}
 	return i;
 }
