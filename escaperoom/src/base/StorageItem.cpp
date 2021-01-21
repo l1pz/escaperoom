@@ -1,5 +1,7 @@
 #include "StorageItem.h"
 
+#include <algorithm>
+
 std::optional<std::shared_ptr<Item>> StorageItem::removeItem(const std::string& name)
 {
 	std::optional<std::shared_ptr<Item>> i;
@@ -25,4 +27,13 @@ std::optional<std::shared_ptr<Item>> StorageItem::getItem(const std::string& nam
 
 void StorageItem::addItem(std::shared_ptr<Item> item) {
 	_items[item->name()] = move(item);
+}
+
+std::vector<std::string> StorageItem::getItemList() {
+	std::vector<std::string> result;
+	result.reserve(_items.size());
+	for(const auto& [itemName, item] : _items) {
+		result.push_back(itemName);
+	}
+	return result;
 }

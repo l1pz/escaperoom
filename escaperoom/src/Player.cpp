@@ -39,10 +39,22 @@ void Player::_pickup(const std::vector<std::string>& items) {
 	else {
 		auto result{ _currentRoom->removeItem(items[0]) };
 		if (result.has_value()) {
+			std::cout << "Felvetted ezt: " << result.value()->name() << ".";
 			_backpack.addItem(result.value());
 		}
 		else {
 			std::cout << "Nem látok ilyen tárgyat.";
+		}
+	}
+}
+
+void Player::_checkBackpack(const std::vector<std::string>& items) {
+	auto backpackItems{ _backpack.getItemList() };
+	if (backpackItems.empty()) std::cout << "Nincs nálam semmilyen tárgy.";
+	else {
+		std::cout << "Ezek a tárgyak vannak nálam: ";
+		for(const auto& bpItem : backpackItems) {
+			std::cout << bpItem << (bpItem != backpackItems.back() ? ", " : "");
 		}
 	}
 }

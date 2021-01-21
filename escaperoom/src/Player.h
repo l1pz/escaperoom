@@ -11,11 +11,13 @@ private:
 	std::unordered_map<std::string,
 		std::function<void(const std::vector<std::string>& items)>> _actions{
 		{"nézd", [this] (const std::vector<std::string>& items){this->_check(items); }},
-		{"vedd fel", [this](const std::vector<std::string>& items) {this->_pickup(items); }}
+		{"vedd fel", [this](const std::vector<std::string>& items) {this->_pickup(items); }},
+		{"leltár", [this](const std::vector<std::string>& items) {this->_checkBackpack(items); }},
 	};
 
 	void _check(const std::vector<std::string>& items) const;
 	void _pickup(const std::vector<std::string>& items);
+	void _checkBackpack(const std::vector<std::string>& items);
 
 public:
 	explicit Player(std::shared_ptr<Room> currentRoom);
