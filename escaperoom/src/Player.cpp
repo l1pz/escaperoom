@@ -63,6 +63,21 @@ void Player::_checkBackpack(const std::vector<std::string>& items) {
 	}
 }
 
+void Player::_putdown(const std::vector<std::string>& items) {
+	if (items.empty()) std::cout << "Mit tegyek le?";
+	else if (items.size() > 1) std::cout << "Egyszerre csak egy tárgyat tudok letenni.";
+	else {
+		auto result{ _backpack.getItem(items[0]) };
+		if (result.has_value()) {
+				_currentRoom->addItem(_backpack.removeItem(items[0]).value(), "Ez van a földön: " + items[0] + ".");
+				std::cout << "Letetted ezt: " << result.value()->name() << ".";
+		}
+		else {
+			std::cout << "Nincs nálam ilyen tárgy.";
+		}
+	}
+}
+
 Player::Player(std::shared_ptr<Room> currentRoom) : _currentRoom{std::move(currentRoom)} {}
 
 void Player::input() {
