@@ -11,6 +11,6 @@ private:
 	std::optional<std::shared_ptr<Item>> _key;
 public:
 	LockedItem(std::string_view name, std::string_view description, std::function<void()> callback, std::optional<std::shared_ptr<Item>> key);
-	void unlock(const Item& key) override;
+	bool unlock(const Item& key) override;
 	bool isLockable() override { return true; }
 };

@@ -20,7 +20,7 @@ public:
 	virtual bool isLockable() { return false; }
 	virtual bool isStorage() { return false; }
 
-	virtual void unlock(const Item& key)
+	virtual bool unlock(const Item& key)
 	{
 	}
 };

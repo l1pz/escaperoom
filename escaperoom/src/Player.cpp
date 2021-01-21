@@ -96,6 +96,52 @@ void Player::_putdown(const std::vector<std::string>& items)
 	}
 }
 
+void Player::_unlock(const std::vector<std::string>& items) {
+	if (items.empty()) std::cout << "Mit nyissak ki?";
+	else if (items.size() > 2) std::cout << "Ennyi tárggyal nem tudok mit kezdeni.";
+	else
+	{
+		std::shared_ptr<Item> lockedItem;
+		std::shared_ptr<Item> key;
+		for(const auto& itemName : items)
+		{
+			auto result{ _currentRoom->getItem(items[0]) };
+			if (result.has_value())
+			{
+				if (result.value()->isLockable())
+				{
+					lockedItem = result.value();
+				}
+				else
+				{
+					key = result.value();
+				}
+			}
+			else
+			{
+				std::cout << "Nem látok ilyen tárgyat: " << itemName;
+				return;
+			}
+		}
+		if(lockedItem)
+		{
+			if(lockedItem->unlock(*key))
+			{
+				std::cout << "Sikeres kinyitottad ezt: " << lockedItem->name();
+			}
+			else
+			{
+				std::cout << "Ezt már egyszer kinyittottad, vagy nem ezzel a tárggyal nyitható: " << key->name();
+			}
+		}
+		else
+		{
+			std::cout << "Ez a tárgy nem nyitható: " << lockedItem->name();
+		}
+	}
+
+}
+
 Player::Player(std::shared_ptr<Room> currentRoom) : _currentRoom{std::move(currentRoom)}
 {
 }
