@@ -10,6 +10,10 @@ public:
   virtual void addItem(std::shared_ptr<Item> item) {}
   virtual std::optional<std::shared_ptr<Item>> removeItem(const std::string& name) { return std::nullopt; }
   virtual std::optional<std::shared_ptr<Item>> getItem(const std::string& name);
+  virtual std::vector<std::string> getItemList() { return {}; }
+  virtual bool isLiftable() { return false; }
+  virtual bool isLockable() { return false; }
+  virtual bool isStorage() { return false; }
   virtual void unlock(const Item& key) {}
 };
 

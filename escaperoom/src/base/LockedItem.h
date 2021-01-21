@@ -11,5 +11,6 @@ private:
 public:
   LockedItem(std::string_view name, std::string_view description, std::function<void()> callback);
   void unlock(const Item& key) override;
+  bool isLockable() override { return true; }
 };
 

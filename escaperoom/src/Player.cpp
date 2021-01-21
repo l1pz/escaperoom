@@ -37,12 +37,16 @@ void Player::_pickup(const std::vector<std::string>& items) {
 	if (items.empty()) std::cout << "Mit vegyek fel?";
 	else if (items.size() > 1) std::cout << "Egyszerre csak egy tárgyat tudok felvenni.";
 	else {
-		auto result{ _currentRoom->removeItem(items[0]) };
+		auto result{ _currentRoom->getItem(items[0]) };
 		if (result.has_value()) {
-			std::cout << "Felvetted ezt: " << result.value()->name() << ".";
-			_backpack.addItem(result.value());
-		}
-		else {
+			if(result.value()->isLiftable()) {
+				_backpack.addItem(_currentRoom->removeItem(items[0]).value());
+				std::cout << "Felvetted ezt: " << result.value()->name() << ".";
+			} else {
+				std::cout << "Ezt a tárgyat nem tudom felvenni.";
+			}
+
+		} else {
 			std::cout << "Nem látok ilyen tárgyat.";
 		}
 	}
