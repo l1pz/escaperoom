@@ -10,7 +10,8 @@
 #include "base/LiftableItem.h"
 #include "Player.h"
 
-int main() {
+int main()
+{
 	std::locale::global(std::locale("hu"));
 #ifdef _WIN32
 	SetConsoleCP(28592);
@@ -24,7 +25,7 @@ int main() {
 	livingRoom->addItem(table, "A szoba közepén van egy asztal.");
 	table->addItem(chest, "Az asztalon egy ládika található.");
 	chest->addItem(money, "Benne egy kevés pénz található.");
-	
+
 	Player p{livingRoom};
 	while (true) p.input();
 }

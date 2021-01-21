@@ -3,6 +3,7 @@
 
 class Item;
 
-void Entity::check() {
+void Entity::check()
+{
 	std::cout << _description;
 }
