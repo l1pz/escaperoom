@@ -28,6 +28,7 @@ int main()
 	livingRoom->addItem(table, "A szoba közepén van egy asztal.");
 	table->addItem(lockedChest, "Az asztalon egy fémládika található.");
 	table->addItem(chest, "Van itt egy faládika is.");
+	table->addItem(key, "Hever rajta egy kulcs.");
 	chest->addItem(money, "A ládikában pénz van.");
 
 	Player p{livingRoom};

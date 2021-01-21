@@ -22,5 +22,6 @@ public:
 
 	virtual bool unlock(const Item& key)
 	{
+		return false;
 	}
 };
