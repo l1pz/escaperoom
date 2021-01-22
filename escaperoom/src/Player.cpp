@@ -102,7 +102,9 @@ void Player::_unlock(const std::vector<std::string>& items) {
 	else
 	{
 		std::shared_ptr<Item> lockedItem;
+		std::string lockedItemName;
 		std::shared_ptr<Item> key;
+		std::string keyName;
 		for(const auto& itemName : items)
 		{
 			auto result{ _currentRoom->getItem(itemName) };
@@ -136,7 +138,7 @@ void Player::_unlock(const std::vector<std::string>& items) {
 		}
 		else
 		{
-			std::cout << "Ez a tárgy nem nyitható: " << lockedItem->name();
+			std::cout << "Ez a tárgy nem nyitható ki.";
 		}
 	}
 
