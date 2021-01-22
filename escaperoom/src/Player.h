@@ -19,7 +19,7 @@ private:
 		{"nyisd", [this](const std::vector<std::string>& items) { this->_unlock(items); }},
 	};
 
-	void _check(const std::vector<std::string>& items) const;
+	void _check(const std::vector<std::string>& items);
 	void _pickup(const std::vector<std::string>& items);
 	void _checkBackpack(const std::vector<std::string>& items);
 	void _putdown(const std::vector<std::string>& items);
