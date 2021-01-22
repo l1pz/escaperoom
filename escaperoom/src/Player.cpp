@@ -105,7 +105,7 @@ void Player::_unlock(const std::vector<std::string>& items) {
 		std::shared_ptr<Item> key;
 		for(const auto& itemName : items)
 		{
-			auto result{ _currentRoom->getItem(items[0]) };
+			auto result{ _currentRoom->getItem(itemName) };
 			if (result.has_value())
 			{
 				if (result.value()->isLockable())
