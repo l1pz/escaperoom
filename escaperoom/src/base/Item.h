@@ -19,9 +19,19 @@ public:
 	virtual bool isLiftable() { return false; }
 	virtual bool isLockable() { return false; }
 	virtual bool isStorage() { return false; }
+	virtual bool isMovable() { return false; }
 
 	virtual bool unlock(const Item& key)
 	{
 		return false;
 	}
+
+	virtual bool unlock()
+	{
+		return false;
+	}
+
+	virtual void move() {}
+
+	virtual 
 };

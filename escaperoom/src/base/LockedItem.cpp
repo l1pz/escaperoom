@@ -5,6 +5,16 @@ LockedItem::LockedItem(const std::string_view name, const std::string_view descr
 {
 	
 }
+bool LockedItem::unlock()
+{
+	if (!_unlocked && !_key)
+	{
+		_unlocked = true;
+		_callback();
+		return true;
+	}
+	return false;
+}
 
 bool LockedItem::unlock(const Item& key)
 {
