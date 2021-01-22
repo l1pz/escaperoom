@@ -2,7 +2,7 @@
 #include "Item.h"
 
 class StorageItem :
-	public Item
+	public virtual Item
 {
 protected:
 	std::unordered_map<std::string, std::shared_ptr<Item>> _items;

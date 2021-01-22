@@ -3,7 +3,7 @@
 #include <memory>
 
 class LiftableItem :
-	public Item
+	public virtual Item
 {
 public:
 	using Item::Item;

@@ -3,7 +3,7 @@
 #include "Item.h"
 
 class LockedItem :
-	public Item
+	public virtual Item
 {
 protected:
 	bool _unlocked{false};
