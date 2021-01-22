@@ -9,6 +9,7 @@ class Player
 private:
 	std::shared_ptr<Room> _currentRoom;
 	StorageItem _backpack{"backpack", "backpack"};
+	std::optional<std::shared_ptr<Item>> _getItem(const std::string& item);
 	std::unordered_map<std::string,
 	                   std::function<void(const std::vector<std::string>& items)>> _actions{
 		{"nézd", [this](const std::vector<std::string>& items) { this->_check(items); }},
@@ -18,7 +19,7 @@ private:
 		{"nyisd", [this](const std::vector<std::string>& items) { this->_unlock(items); }},
 	};
 
-	void _check(const std::vector<std::string>& items) const;
+	void _check(const std::vector<std::string>& items);
 	void _pickup(const std::vector<std::string>& items);
 	void _checkBackpack(const std::vector<std::string>& items);
 	void _putdown(const std::vector<std::string>& items);

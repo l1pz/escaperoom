@@ -19,13 +19,20 @@ std::vector<std::string> split(const std::string& str)
 }
 
 
-void Player::_check(const std::vector<std::string>& items) const
+std::optional<std::shared_ptr<Item>> Player::_getItem(const std::string& item)
+{
+	auto result{ _currentRoom->getItem(item) };
+	if (!result) result = _backpack.getItem(item);
+	return result;
+}
+
+void Player::_check(const std::vector<std::string>& items)
 {
 	if (items.empty()) _currentRoom->check();
 	else if (items.size() > 1) std::cout << "Egyszerre csak egy tárgyat tudok megnézni.";
 	else
 	{
-		auto result{_currentRoom->getItem(items[0])};
+		auto result{_getItem(items[0])};
 		if (result.has_value())
 		{
 			result.value()->check();
@@ -105,7 +112,7 @@ void Player::_unlock(const std::vector<std::string>& items) {
 		std::shared_ptr<Item> key;
 		for(const auto& itemName : items)
 		{
-			auto result{ _currentRoom->getItem(items[0]) };
+			auto result{ _getItem(items[0]) };
 			if (result.has_value())
 			{
 				if (result.value()->isLockable())
@@ -171,7 +178,7 @@ void Player::input()
 					actionLen = multiwordActionLen;
 				}
 			}
-			items = std::vector<std::string>(splitText.begin() + actionLen, splitText.end());
+			items = std::vector<std::string>(splitText.begin() + actionLen + 1, splitText.end());
 		}
 		if (_actions.count(action))
 		{
