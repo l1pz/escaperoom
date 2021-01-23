@@ -13,6 +13,10 @@ public:
 	{
 	}
 
+	virtual void addItem(std::shared_ptr<Item> item, std::string_view description, std::string_view descriptionMoved)
+	{
+	}
+
 	virtual std::optional<std::shared_ptr<Item>> removeItem(const std::string& name) { return std::nullopt; }
 	virtual std::optional<std::shared_ptr<Item>> getItem(const std::string& name);
 	virtual std::vector<std::string> getItemList() { return {}; }
@@ -21,17 +25,15 @@ public:
 	virtual bool isStorage() { return false; }
 	virtual bool isMovable() { return false; }
 
-	virtual bool unlock(const Item& key)
+	virtual void unlock(const Item& key)
 	{
-		return false;
 	}
 
-	virtual bool unlock()
+	virtual void unlock()
 	{
-		return false;
 	}
 
-	virtual void move() {}
-
-	virtual 
+	virtual void move()
+	{
+	}
 };
