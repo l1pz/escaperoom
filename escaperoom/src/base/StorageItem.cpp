@@ -8,7 +8,7 @@ void StorageItem::check()
 	Item::check();
 	for (const auto& [name, itemDesc] : _itemDescriptions)
 	{
-		std::cout << " " << itemDesc;
+		std::cout << std::endl << itemDesc;
 	}
 }
 
@@ -42,7 +42,7 @@ std::optional<std::shared_ptr<Item>> StorageItem::getItem(const std::string& nam
 void StorageItem::addItem(std::shared_ptr<Item> item, const std::string_view description)
 {
 	_itemDescriptions[item->name()] = description;
-	_items[item->name()] = move(item);
+	_items[item->name()] = std::move(item);
 }
 
 std::vector<std::string> StorageItem::getItemList()

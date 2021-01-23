@@ -5,10 +5,11 @@ class StorageItem :
 	public virtual Item
 {
 protected:
-	std::unordered_map<std::string, std::shared_ptr<Item>> _items;
-	std::unordered_map<std::string, std::string> _itemDescriptions;
+	std::unordered_map<std::string, std::shared_ptr<Item>> _items{};
+	std::unordered_map<std::string, std::string> _itemDescriptions{};
 public:
 	using Item::Item;
+	StorageItem() = default;
 	void check() override;
 	std::optional<std::shared_ptr<Item>> removeItem(const std::string& name) override;
 	std::optional<std::shared_ptr<Item>> getItem(const std::string& name) override;
