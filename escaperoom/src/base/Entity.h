@@ -1,8 +1,7 @@
 ﻿#pragma once
 #include <string>
-#include <unordered_map>
-#include <memory>
-#include <optional>
+
+#include <cereal/types/string.hpp>
 
 class Entity
 {
@@ -19,4 +18,9 @@ public:
 
 	const std::string& name() const { return _name; }
 	virtual void check();
+
+	template <class Archive>
+	void serialize(Archive& ar) {
+		ar(_name, _description);
+	};
 };

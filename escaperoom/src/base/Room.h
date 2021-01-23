@@ -1,6 +1,8 @@
 #pragma once
 #include "StorageItem.h"
 
+#include <cereal/types/unordered_map.hpp>
+#include <cereal/types/memory.hpp>
 class Room :
 	public StorageItem
 {
@@ -19,6 +21,11 @@ private:
 
 public:
 	using StorageItem::StorageItem;
+	template <class Archive>
+	void serialize(Archive& ar)
+	{
+		ar(cereal::base_class<StorageItem>(this), _exits);
+	}
 	void addExit(Direction direction, std::shared_ptr<Room> exit);
 	std::optional<std::shared_ptr<Room>> direction(Direction dir);
 	void check() override;

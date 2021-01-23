@@ -6,6 +6,8 @@
 #include <iterator>
 #include <utility>
 #include <vector>
+#include <fstream>
+#include <cereal/archives/binary.hpp>
 #include "Player.h"
 
 std::vector<std::string> split(const std::string& str)
@@ -248,6 +250,57 @@ void Player::_help()
 	for (const auto& [command, action] : _actions)
 	{
 		std::cout << std::endl << command;
+	}
+}
+
+void Player::_save(const std::vector<std::string>& items)
+{
+	std::string fileName{ "gyorsmentes.sav" };
+	if (!items.empty())
+	{
+		if (items.size() > 1)
+		{
+			std::cout << "Csak egy fájlt tudok egyszerre elmenteni.";
+			return;
+		}
+		fileName = items[0] + ".sav";
+	}
+	std::ofstream outputStream(fileName, std::ios::binary);
+	cereal::BinaryOutputArchive outputArchive(outputStream);
+	try
+	{
+		outputArchive(*this);
+		std::cout << "Mentés sikerült a " << fileName << " fájlba.";
+	}
+	catch (const cereal::Exception& e)
+	{
+		std::cout << "Nem sikerült a mentés.";
+	}
+	
+}
+
+void Player::_load(const std::vector<std::string>& items)
+{
+	std::string fileName{ "gyorsmentes.sav" };
+	if (!items.empty())
+	{
+		if (items.size() > 1)
+		{
+			std::cout << "Csak egy fájlt tudok egyszerre elmenteni.";
+			return;
+		}
+		fileName = items[0] + ".sav";
+	}
+	std::ifstream inputStream(fileName, std::ios::binary);
+	cereal::BinaryInputArchive inputArchive(inputStream);
+	try
+	{
+		inputArchive(*this);
+		std::cout << "Betöltés sikerült a " << fileName << " fájlból.";
+	}
+	catch (const cereal::Exception& e)
+	{
+		std::cout << "Nem sikerült a betöltés.";
 	}
 }
 

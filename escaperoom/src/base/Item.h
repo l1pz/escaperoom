@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
-
+#include <cereal/types/base_class.hpp>
+#include <optional>
 class Item :
 	public Entity,
 	public std::enable_shared_from_this<Item>
@@ -8,6 +9,12 @@ class Item :
 public:
 	using Entity::Entity;
 	bool operator==(const Item& rhs) const { return this->name() == rhs.name(); }
+
+	template <class Archive>
+	void serialize(Archive& ar)
+	{
+		ar(cereal::base_class<Entity>(this));
+	}
 
 	virtual void addItem(std::shared_ptr<Item> item, std::string_view description)
 	{
