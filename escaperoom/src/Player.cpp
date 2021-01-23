@@ -221,6 +221,36 @@ void Player::_break(const std::vector<std::string>& items)
 	}
 }
 
+void Player::_direction(const std::vector<std::string>& items, Room::Direction dir)
+{
+	if(!items.empty())
+	{
+		std::cout << "Egyszerre csak egy irányba tudok menni.";
+	}
+	else
+	{
+		auto newRoom = _currentRoom->direction(dir);
+		if(newRoom.has_value())
+		{
+			std::cout << "Átmentél az kijáraton " << Room::directionToString(dir) << ".";
+			_currentRoom = newRoom.value();
+		}
+		else
+		{
+			std::cout << "Ebben az irányban nincs kijárat.";
+		}
+	}
+}
+
+void Player::_help()
+{
+	std::cout << "A használható parancsok: ";
+	for (const auto& [command, action] : _actions)
+	{
+		std::cout << std::endl << command;
+	}
+}
+
 Player::Player(std::shared_ptr<Room> currentRoom) : _currentRoom{std::move(currentRoom)}
 {
 }

@@ -3,7 +3,7 @@
 #include "LockedItem.h"
 #include "Room.h"
 class MovableItem :
-	public Item
+	public virtual Item
 {
 private:
 	std::shared_ptr<Room> _room;

@@ -21,6 +21,7 @@ int main()
 	SetConsoleOutputCP(28592);
 #endif
 	auto livingRoom = std::make_shared<Room>("nappali", "Egy nappaliban állok.");
+	auto kitchen = std::make_shared<Room>("konyha", "Egy konyhában vagyok.");
 	auto table = std::make_shared<StorageItem>("asztal", "Az asztal elég öreg, már pattogzik rajta a festék.");
 	const auto key = std::make_shared<LiftableItem>("kulcs", "Egy rozsdás öreg kulcs.");
 	const auto lockedChest = std::make_shared<LockedItem>("fémládika", "Az ládika alumíniumból készült. Be van zárva.", key); 
@@ -40,6 +41,10 @@ int main()
 	chest->addItem(money, "A ládikában pénz van.");
 	sofa->addItem(coin, "Egy érme van a földön.", "A kanapé alatt egy érme volt a porban.");
 	livingRoom->addItem(sofa, "A sarokban egy kanapé áll.");
+
+	livingRoom->addExit(Room::Direction::EAST, kitchen);
+	kitchen->addExit(Room::Direction::WEST, livingRoom);
+	
 	Player p{livingRoom};
 	while (true) p.input();
 }

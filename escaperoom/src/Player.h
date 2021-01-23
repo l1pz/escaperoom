@@ -19,6 +19,14 @@ private:
 		{"nyisd", [this](const std::vector<std::string>& items) { this->_unlock(items); }},
 		{"húzd", [this](const std::vector<std::string>& items) { this->_move(items); }},
 		{"törd", [this](const std::vector<std::string>& items) { this->_break(items); }},
+
+	  {"kelet", [this](const std::vector<std::string>& items) { this->_direction(items, Room::Direction::EAST); }},
+	  {"dél", [this](const std::vector<std::string>& items) { this->_direction(items, Room::Direction::SOUTH); }},
+	  {"nyugat", [this](const std::vector<std::string>& items) { this->_direction(items, Room::Direction::WEST); }},
+	  {"észak", [this](const std::vector<std::string>& items) { this->_direction(items, Room::Direction::NORTH); }},
+
+		{"?", [this](const std::vector<std::string>& items) { this->_help(); }},
+	                   	
 	};
 
 	void _check(const std::vector<std::string>& items);
@@ -28,6 +36,8 @@ private:
 	void _unlock(const std::vector<std::string>& items);
 	void _move(const std::vector<std::string>& items) const;
 	void _break(const std::vector<std::string>& items);
+	void _direction(const std::vector<std::string>& items, Room::Direction dir);
+	void _help();
 
 public:
 	explicit Player(std::shared_ptr<Room> currentRoom);
