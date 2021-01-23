@@ -8,7 +8,6 @@ void LockedItem::_unlock()
 	{
 		_unlocked = true;
 		std::cout << "Sikeres kinyitottad ezt: " << name();
-		_callback();
 	}
 	else
 	{
@@ -17,8 +16,8 @@ void LockedItem::_unlock()
 	
 }
 
-LockedItem::LockedItem(const std::string_view name, const std::string_view description, std::function<void()> callback, std::optional<std::shared_ptr<Item>> key = std::nullopt)
-	: Item{ name, description }, _callback{ std::move(callback) }, _key{ std::move(key) }
+LockedItem::LockedItem(const std::string_view name, const std::string_view description, std::optional<std::shared_ptr<Item>> key = std::nullopt)
+	: Item{ name, description }, _key{ std::move(key) }
 {
 }
 
@@ -29,6 +28,10 @@ void LockedItem::unlock()
 	if (!_key)
 	{
 		_unlock();
+	}
+	else
+	{
+		std::cout << "Ennek a kinyitásához valami tárgyra van szükségem.";
 	}
 }
 
