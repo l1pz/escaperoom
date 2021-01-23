@@ -22,6 +22,10 @@ void MovableItem::move()
 	}
 }
 
+MovableItem::MovableItem(std::shared_ptr<Room> room) : _room{std::move(room)}
+{
+}
+
 MovableItem::MovableItem(const std::string_view name, const std::string_view description, std::shared_ptr<Room> room) :
 	Item{ name, description }, _room{ std::move(room) }
 {

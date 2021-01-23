@@ -13,6 +13,7 @@ private:
 	std::unordered_map<std::string, std::string> _itemDescriptionsMoved{};
 
 public:
+	explicit MovableItem(std::shared_ptr<Room> room);
 	MovableItem(std::string_view name, std::string_view description, std::shared_ptr<Room> room);
 	void addItem(std::shared_ptr<Item> item, std::string_view description, std::string_view descriptionMoved) override;
 	void move() override;
