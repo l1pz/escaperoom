@@ -16,7 +16,7 @@ void LockedItem::_unlock()
 	
 }
 
-LockedItem::LockedItem(const std::string_view name, const std::string_view description, std::optional<std::shared_ptr<Item>> key = std::nullopt)
+LockedItem::LockedItem(const std::string_view name, const std::string_view description, std::shared_ptr<Item> key)
 	: Item{ name, description }, _key{ std::move(key) }
 {
 }

@@ -7,11 +7,12 @@ class LockedItem :
 {
 protected:
 	bool _unlocked{false};
-	std::optional<std::shared_ptr<Item>> _key{std::nullopt};
+	std::shared_ptr<Item> _key;
 	void _unlock();
 public:
 	LockedItem() = default;
-	LockedItem(std::string_view name, std::string_view description, std::optional<std::shared_ptr<Item>> key);
+	using Item::Item;
+	LockedItem(std::string_view name, std::string_view description, std::shared_ptr<Item> key);
 	void unlock(const Item& key) override;
 	void unlock() override;
 	bool isLockable() override { return true; }
