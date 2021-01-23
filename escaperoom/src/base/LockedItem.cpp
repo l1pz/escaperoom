@@ -37,7 +37,7 @@ void LockedItem::unlock()
 
 void LockedItem::unlock(const Item& key)
 {
-	if (key == *_key.value())
+	if (key == *_key)
 	{
 		_unlock();
 	}
