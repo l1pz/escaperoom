@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\base\MovableItem.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\base\LockedItem.cpp" />
     <ClCompile Include="src\base\LiftableItem.cpp" />
@@ -94,6 +95,7 @@
     <ClCompile Include="src\base\StorageItem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\base\MovableItem.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\base\LockedItem.h" />
     <ClInclude Include="src\base\LiftableItem.h" />

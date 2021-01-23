@@ -17,6 +17,7 @@ private:
 		{"leltár", [this](const std::vector<std::string>& items) { this->_checkBackpack(items); }},
 		{"tedd le", [this](const std::vector<std::string>& items) { this->_putdown(items); }},
 		{"nyisd", [this](const std::vector<std::string>& items) { this->_unlock(items); }},
+		{"húzd", [this](const std::vector<std::string>& items) { this->_move(items); }},
 	};
 
 	void _check(const std::vector<std::string>& items);
@@ -24,6 +25,7 @@ private:
 	void _checkBackpack(const std::vector<std::string>& items);
 	void _putdown(const std::vector<std::string>& items);
 	void _unlock(const std::vector<std::string>& items);
+	void _move(const std::vector<std::string>& items) const;
 
 public:
 	explicit Player(std::shared_ptr<Room> currentRoom);

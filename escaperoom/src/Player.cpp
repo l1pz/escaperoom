@@ -78,7 +78,7 @@ void Player::_checkBackpack(const std::vector<std::string>& items)
 		std::cout << "Ezek a tárgyak vannak nálam: ";
 		for (const auto& bpItem : backpackItems)
 		{
-			std::cout << bpItem << (bpItem != backpackItems.back() ? ", " : "");
+			std::cout << std::endl << bpItem;
 		}
 	}
 }
@@ -133,14 +133,15 @@ void Player::_unlock(const std::vector<std::string>& items) {
 		}
 		if(lockedItem)
 		{
-			if(lockedItem->unlock(*key))
+			if(key)
 			{
-				std::cout << "Sikeres kinyitottad ezt: " << lockedItem->name();
+				lockedItem->unlock(*key);
 			}
 			else
 			{
-				std::cout << "Ezt már egyszer kinyittottad, vagy nem ezzel a tárggyal nyitható: " << key->name();
+				lockedItem->unlock();
 			}
+				
 		}
 		else
 		{
@@ -148,6 +149,31 @@ void Player::_unlock(const std::vector<std::string>& items) {
 		}
 	}
 
+}
+
+void Player::_move(const std::vector<std::string>& items) const
+{
+	if (items.empty()) std::cout << "Mit húzzak el?";
+	else if (items.size() > 1) std::cout << "Egyszerre csak egy tárgyat elhúzni.";
+	else
+	{
+		auto result{ _currentRoom->getItem(items[0]) };
+		if (result.has_value())
+		{
+			if (result.value()->isMovable())
+			{
+				result.value()->move();
+			}
+			else
+			{
+				std::cout << "Ezt nem tudom elhúzni.";
+			}
+		}
+		else
+		{
+			std::cout << "Nem látok ilyen tárgyat.";
+		}
+	}
 }
 
 Player::Player(std::shared_ptr<Room> currentRoom) : _currentRoom{std::move(currentRoom)}
