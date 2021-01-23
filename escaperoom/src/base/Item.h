@@ -24,6 +24,7 @@ public:
 	virtual bool isLockable() { return false; }
 	virtual bool isStorage() { return false; }
 	virtual bool isMovable() { return false; }
+	virtual bool isBreakable() { return false; }
 
 	virtual void unlock(const Item& key)
 	{
@@ -34,6 +35,14 @@ public:
 	}
 
 	virtual void move()
+	{
+	}
+
+	virtual void breakIt(const Item& tool)
+	{
+	}
+	
+	virtual void breakIt()
 	{
 	}
 };

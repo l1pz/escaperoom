@@ -108,9 +108,7 @@ void Player::_unlock(const std::vector<std::string>& items) {
 	else
 	{
 		std::shared_ptr<Item> lockedItem;
-		std::string lockedItemName;
 		std::shared_ptr<Item> key;
-		std::string keyName;
 		for(const auto& itemName : items)
 		{
 			auto result{ _getItem(itemName) };
@@ -172,6 +170,53 @@ void Player::_move(const std::vector<std::string>& items) const
 		else
 		{
 			std::cout << "Nem látok ilyen tárgyat.";
+		}
+	}
+}
+
+void Player::_break(const std::vector<std::string>& items)
+{
+	if (items.empty()) std::cout << "Mit törjek össze ki?";
+	else if (items.size() > 2) std::cout << "Ennyi tárggyal nem tudok mit kezdeni.";
+	else
+	{
+		std::shared_ptr<Item> breakableItem;
+		std::shared_ptr<Item> tool;
+		for (const auto& itemName : items)
+		{
+			auto result{ _getItem(itemName) };
+			if (result.has_value())
+			{
+				if (result.value()->isBreakable())
+				{
+					breakableItem = result.value();
+				}
+				else
+				{
+					tool = result.value();
+				}
+			}
+			else
+			{
+				std::cout << "Nem látok ilyen tárgyat: " << itemName;
+				return;
+			}
+		}
+		if (breakableItem)
+		{
+			if (tool)
+			{
+				breakableItem->breakIt(*tool);
+			}
+			else
+			{
+				breakableItem->breakIt();
+			}
+
+		}
+		else
+		{
+			std::cout << "Ez a tárgy nem törhetõ össze.";
 		}
 	}
 }

@@ -11,6 +11,7 @@
 #include "base/LockedItem.h"
 #include "base/MovableItem.h"
 #include "Player.h"
+#include "base/BreakableItem.h"
 
 int main()
 {
@@ -27,11 +28,15 @@ int main()
 	const auto money = std::make_shared<LiftableItem>("pénz", "Kissé gyûrött, de legalább nem szakadt.");
 	auto sofa = std::make_shared<MovableItem>("kanapé", "Egy poros, foltos kanapé.", livingRoom);
 	const auto coin = std::make_shared<LiftableItem>("érme", "Egy 5 forintos érme.");
+	auto crowbar = std::make_shared<Item>("feszítõvas", "Pont mint Gordon Freemané.");
+	const auto crate = std::make_shared<BreakableItem>("láda", "Egy fából készült láda. Nem tûnik túl erõsnek.", crowbar);
 	
 	livingRoom->addItem(table, "A szoba közepén van egy asztal.");
+	livingRoom->addItem(crate, "Egy láda van az asztal elõtt.");
 	table->addItem(lockedChest, "Az asztalon egy fémládika található.");
 	table->addItem(chest, "Van itt egy faládika is.");
 	table->addItem(key, "Hever rajta egy kulcs.");
+	table->addItem(crowbar, "Van rajta egy feszítõvas is.");
 	chest->addItem(money, "A ládikában pénz van.");
 	sofa->addItem(coin, "Egy érme van a földön.", "A kanapé alatt egy érme volt a porban.");
 	livingRoom->addItem(sofa, "A sarokban egy kanapé áll.");
