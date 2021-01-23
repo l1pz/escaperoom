@@ -11,6 +11,7 @@ private:
 	std::string _description;
 
 public:
+	Entity() = default;
 	Entity(const std::string_view name, const std::string_view description) :
 		_name{name}, _description{description}
 	{
