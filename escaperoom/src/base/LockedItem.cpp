@@ -1,28 +1,45 @@
 #include "LockedItem.h"
 
-LockedItem::LockedItem(const std::string_view name, const std::string_view description, std::function<void()> callback, std::optional<std::shared_ptr<Item>> key = std::nullopt)
-	: Item{ name, description }, _callback{ move(callback) }, _key{ move(key) }
+#include <iostream>
+
+void LockedItem::_unlock()
 {
+	if(!_unlocked)
+	{
+		_unlocked = true;
+		std::cout << "Sikeres kinyitottad ezt: " << name();
+		_callback();
+	}
+	else
+	{
+		std::cout << "Ezt már egyszer kinyitottam.";
+	}
 	
 }
-bool LockedItem::unlock()
+
+LockedItem::LockedItem(const std::string_view name, const std::string_view description, std::function<void()> callback, std::optional<std::shared_ptr<Item>> key = std::nullopt)
+	: Item{ name, description }, _callback{ std::move(callback) }, _key{ std::move(key) }
 {
-	if (!_unlocked && !_key)
-	{
-		_unlocked = true;
-		_callback();
-		return true;
-	}
-	return false;
 }
 
-bool LockedItem::unlock(const Item& key)
+
+
+void LockedItem::unlock()
 {
-	if (!_unlocked && key == *_key.value())
+	if (!_key)
 	{
-		_unlocked = true;
-		_callback();
-		return true;
+		_unlock();
 	}
-	return false;
+}
+
+void LockedItem::unlock(const Item& key)
+{
+	if (key == *_key.value())
+	{
+		_unlock();
+	}
+	else
+	{
+		std::cout << "Ezt nem ezzel a tárggyal kell kinyitni.";
+	}
 }
