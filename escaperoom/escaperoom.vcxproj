@@ -86,6 +86,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\unique_items\Key.cpp" />
     <ClCompile Include="src\base\LockedStorageItem.cpp" />
     <ClCompile Include="src\unique_items\Box.cpp" />
     <ClCompile Include="src\unique_items\Backpack.cpp" />
@@ -102,6 +103,7 @@
     <ClCompile Include="src\base\StorageItem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\unique_items\Key.h" />
     <ClInclude Include="src\base\LockedStorageItem.h" />
     <ClInclude Include="src\unique_items\Box.h" />
     <ClInclude Include="src\unique_items\Backpack.h" />

@@ -15,5 +15,7 @@ public:
 		ar(cereal::virtual_base_class<LockedItem>(this), cereal::virtual_base_class<StorageItem>(this));
 	}
 	void check() override;
+	std::optional<std::shared_ptr<Item>> removeItem(const std::string& name) override;
+	std::optional<std::shared_ptr<Item>> getItem(const std::string& name) override;
 };
 
