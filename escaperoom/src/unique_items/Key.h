@@ -4,8 +4,8 @@ class Key :
 	public LiftableItem
 {
 public:
-	using LiftableItem::LiftableItem;
 	Key() = default;
+	using LiftableItem::LiftableItem;
 	template <class Archive>
 	void serialize(Archive& ar)
 	{

@@ -60,6 +60,9 @@
     <ClCompile Include="src\unique_items\Key.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\unique_items\Door.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\base\Entity.h">
@@ -102,6 +105,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\unique_items\Key.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\unique_items\Door.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
