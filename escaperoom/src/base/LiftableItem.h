@@ -6,6 +6,8 @@
 class LiftableItem :
 	public virtual Item
 {
+protected:
+	using Item::Item;
 public:
 	std::optional<std::shared_ptr<Item>> removeItem(const std::string& name) override;
 	bool isLiftable() override { return true; }

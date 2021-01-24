@@ -11,6 +11,7 @@
 #include "unique_items/Cabinet.h"
 #include "unique_items/Box.h"
 #include "Player.h"
+#include "unique_items/Key.h"
 
 std::shared_ptr<Room> init()
 {
@@ -22,11 +23,14 @@ std::shared_ptr<Room> init()
 	cabinet->movedMessage = "Elhúztad a szekrényt. Mögötte a falon egy ablakot látsz.";
 	cabinet->alreadyMovedMessage = "Már elhúztad a szekrényt. Egy ablak volt mögötte.";
 
-	auto box = std::make_shared<Box>("doboz", "Egy apró fémdoboz. Mintha csörögne benne valami.");
+	auto box = std::make_shared<Box>("doboz", "Egy apró fémdoboz.");
 	box->unlockedMessage = "Kinyitottad a dobozt. Egy kulcs volt benne.";
 	box->alreadyUnlockedMessage = "Már nyitva van a doboz.";
 
 	cabinet->addItemInside(box, "Egy fényes doboz van a szekrény aljában.");
+
+	auto key = std::make_shared<Key>("kulcs", "Egy régi rozsdás kulcs.");
+	box->addItemInside(key, "Egy kulcs van benne.");
 
 	livingRoom->addItemInside(cabinet, "A fal mellett egy szekrény áll.");
 	return livingRoom;

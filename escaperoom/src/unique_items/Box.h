@@ -16,3 +16,5 @@ public:
 	}
 	std::optional<std::shared_ptr<Item>> removeItem(const std::string& name) override;
 };
+
+CEREAL_REGISTER_TYPE(Box);

@@ -6,6 +6,11 @@ class Backpack :
 {
 public:
 	using StorageItem::StorageItem;
-	
+	template <class Archive>
+	void serialize(Archive& ar)
+	{
+		ar(cereal::virtual_base_class<StorageItem>(this));
+	}
 };
 
+CEREAL_REGISTER_TYPE(Backpack);

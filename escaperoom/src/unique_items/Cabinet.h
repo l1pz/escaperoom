@@ -1,7 +1,6 @@
 #pragma once
 #include "../base/LockedStorageItem.h"
 #include "../base/MovableItem.h"
-#include <cereal/types/polymorphic.hpp>
 class Cabinet :
 	public MovableItem,
 	public LockedStorageItem
