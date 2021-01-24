@@ -16,11 +16,11 @@ public:
 		ar(cereal::base_class<Entity>(this));
 	}
 
-	virtual void addItem(std::shared_ptr<Item> item, std::string_view description)
+	virtual void addItemInside(std::shared_ptr<Item> item, std::string_view description)
 	{
 	}
 
-	virtual void addItem(std::shared_ptr<Item> item, std::string_view description, std::string_view descriptionMoved)
+	virtual void addItemBehind(std::shared_ptr<Item> item, std::string_view description, std::string_view descriptionMoved)
 	{
 	}
 

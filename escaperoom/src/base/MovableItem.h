@@ -13,6 +13,10 @@ private:
 	std::unordered_map<std::string, std::string> _itemDescriptionsAfterMoved{};
 	std::unordered_map<std::string, std::string> _itemDescriptionsMoved{};
 
+public:
+	std::string movedMessage{ "Sikerült elhúzni." };
+	std::string alreadyMovedMessage{ "Ezt a tárgyat már egyszer elhúztad." };
+
 public: 
 	MovableItem() = default;
 	explicit MovableItem(std::shared_ptr<Room> room);
@@ -20,9 +24,11 @@ public:
 	template <class Archive>
 	void serialize(Archive& ar)
 	{
-		ar(cereal::virtual_base_class<Item>(this), _room, _moved, _items, _itemDescriptionsAfterMoved, _itemDescriptionsMoved);
+		ar(cereal::virtual_base_class<Item>(this), _room, _moved, _items, _itemDescriptionsAfterMoved,
+		   _itemDescriptionsMoved);
 	}
-	void addItem(std::shared_ptr<Item> item, std::string_view descriptionAfterMoved, std::string_view descriptionMoved) override;
+	void addItemBehind(std::shared_ptr<Item> item, std::string_view descriptionAfterMoved,
+	             std::string_view descriptionMoved) override;
 	void move() override;
 	bool isMovable() override { return true; }
 };

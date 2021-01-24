@@ -7,11 +7,11 @@ void BreakableItem::_break()
 	if (!_broken)
 	{
 		_broken = true;
-		std::cout << "Sikerült összetörni.";
+		std::cout << brokeMessage;
 	}
 	else
 	{
-		std::cout << "Ezt már egyszer összetörtem.";
+		std::cout << alreadyBrokeMessage;
 	}
 }
 
@@ -28,7 +28,7 @@ void BreakableItem::breakIt(const Item& tool)
 	}
 	else
 	{
-		std::cout << "Ezt ezzel a tárggyal nem tudom széttörni.";
+		std::cout << wrongToolMessage;
 	}
 }
 
@@ -40,6 +40,6 @@ void BreakableItem::breakIt()
 	}
 	else
 	{
-		std::cout << "Ennek a széttöréséhez valami tárgyra van szükségem.";
+		std::cout << needToolMessage;
 	}
 }

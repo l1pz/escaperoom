@@ -7,11 +7,11 @@ void LockedItem::_unlock()
 	if(!_unlocked)
 	{
 		_unlocked = true;
-		std::cout << "Sikeres kinyitottad ezt: " << name();
+		std::cout << unlockedMessage;
 	}
 	else
 	{
-		std::cout << "Ezt már egyszer kinyitottam.";
+		std::cout << alreadyUnlockedMessage;
 	}
 	
 }
@@ -31,7 +31,20 @@ void LockedItem::unlock()
 	}
 	else
 	{
-		std::cout << "Ennek a kinyitásához valami tárgyra van szükségem.";
+		std::cout << needKeyMessage;
+	}
+}
+
+void LockedItem::check()
+{
+	Item::check();
+	if(_unlocked)
+	{
+		std::cout << " Ki van nyitva.";
+	}
+	else
+	{
+		std::cout << " Be van zárva.";
 	}
 }
 
@@ -43,6 +56,6 @@ void LockedItem::unlock(const Item& key)
 	}
 	else
 	{
-		std::cout << "Ezt nem ezzel a tárggyal kell kinyitni.";
+		std::cout << wrongKeyMessage;
 	}
 }

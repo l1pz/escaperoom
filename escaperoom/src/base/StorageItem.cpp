@@ -3,13 +3,19 @@
 #include <algorithm>
 #include <iostream>
 
-void StorageItem::check()
+void StorageItem::checkContainedItems()
 {
-	Item::check();
 	for (const auto& [name, itemDesc] : _itemDescriptions)
 	{
 		std::cout << std::endl << itemDesc;
 	}
+}
+
+void StorageItem::check()
+{
+	Item::check();
+	checkContainedItems();
+	
 }
 
 std::optional<std::shared_ptr<Item>> StorageItem::removeItem(const std::string& name)
@@ -39,7 +45,7 @@ std::optional<std::shared_ptr<Item>> StorageItem::getItem(const std::string& nam
 	return i;
 }
 
-void StorageItem::addItem(std::shared_ptr<Item> item, const std::string_view description)
+void StorageItem::addItemInside(std::shared_ptr<Item> item, const std::string_view description)
 {
 	_itemDescriptions[item->name()] = description;
 	_items[item->name()] = std::move(item);

@@ -13,6 +13,12 @@ private:
 	bool _broken{false};
 	std::shared_ptr<Item> _tool;
 
+public:
+	std::string brokeMessage{ "Sikerült összetörni." };
+	std::string alreadyBrokeMessage{ "Ezt már egyszer összetörtem." };
+	std::string wrongToolMessage{ "Ezt ezzel a tárggyal nem tudom széttörni." };
+	std::string needToolMessage{ "Ennek a széttöréséhez valami tárgyra van szükségem." };
+
 private:
 	void _break();
 
