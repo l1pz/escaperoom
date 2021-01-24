@@ -1,7 +1,7 @@
 #pragma once
 #include <unordered_map>
 #include <functional>
-#include "base/StorageItem.h"
+#include "unique_items/Backpack.h"
 #include "base/Room.h"
 
 #include <cereal/types/memory.hpp>
@@ -10,7 +10,7 @@ class Player
 {
 private:
 	std::shared_ptr<Room> _currentRoom;
-	StorageItem _backpack{};
+	Backpack _backpack;
 
 private:
 	std::unordered_map<std::string,

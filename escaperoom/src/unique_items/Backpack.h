@@ -6,5 +6,6 @@ class Backpack :
 {
 public:
 	using StorageItem::StorageItem;
+	
 };
 

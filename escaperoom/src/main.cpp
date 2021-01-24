@@ -14,8 +14,15 @@
 std::shared_ptr<Room> init()
 {
 	auto livingRoom = std::make_shared<Room>("nappali", "Egy nappaliban állok.");
-	const auto cabinet = std::make_shared<Cabinet>("szekrény", "Egy fenyõ szekrény rajta matricákkal.", livingRoom);
-	livingRoom->addItemInside(cabinet, "A fal mellett szorosan egy szekrény áll.");
+
+	auto cabinet = std::make_shared<Cabinet>("szekrény", "Egy fenyõ szekrény rajta matricákkal.", livingRoom);
+	cabinet->unlockedMessage = "Kinyitottad a szekrényt. Egy dobozt látsz benne.";
+	cabinet->alreadyUnlockedMessage = "Már ki van nyitva a szekrény.";
+	cabinet->movedMessage = "Elhúztad a szekrényt. Mögötte a falon egy ablakot látsz.";
+	cabinet->alreadyMovedMessage = "Már elhúztad a szekrényt. Egy ablak volt mögötte.";
+
+
+	livingRoom->addItemInside(cabinet, "A fal mellett egy szekrény áll.");
 	return livingRoom;
 }
 
