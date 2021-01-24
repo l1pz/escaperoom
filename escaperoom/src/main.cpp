@@ -29,7 +29,7 @@ std::shared_ptr<Room> init()
 
 	cabinet->addItemInside(box, "Egy fényes doboz van a szekrény aljában.");
 
-	auto key = std::make_shared<Key>("kulcs", "Egy régi rozsdás kulcs.");
+	const auto key = std::make_shared<Key>("kulcs", "Egy régi rozsdás kulcs.");
 	box->addItemInside(key, "Egy kulcs van benne.");
 
 	livingRoom->addItemInside(cabinet, "A fal mellett egy szekrény áll.");

@@ -17,17 +17,18 @@ Room::Room(const std::string& name, const std::string& description)
 	setDescription(description);
 }
 
-void Room::addExit(const Direction direction, std::shared_ptr<Room> exit)
+void Room::addExit(Exit exit)
 {
-	assert(_exits.count(direction) == 0);
-	_exits[direction] = std::move(exit);
+	assert(_exits.count(exit.direction) == 0);
+	_exits[exit.direction] = std::move(exit);
+	
 }
 
 std::optional<std::shared_ptr<Room>> Room::direction(const Direction dir)
 {
-		if(_exits.count(dir))
+		if(_exits.count(dir) && _exits[dir].isVisible())
 		{
-			return _exits[dir];
+			return _exits[dir].room;
 		}
 		return std::nullopt;
 }
@@ -35,9 +36,12 @@ std::optional<std::shared_ptr<Room>> Room::direction(const Direction dir)
 void Room::check()
 {
 	StorageItem::check();
-	for (const auto& [direction, room] : _exits)
+	for (const auto& [direction, exit] : _exits)
 	{
-		std::cout << std::endl << "Egy ajtó van " << _directionToString[direction] << ".";
+		if (exit.isVisible())
+		{
+			std::cout << std::endl << "Egy kijárat van " << _directionToString[direction] << ".";
+		}
 	}
 }
 
