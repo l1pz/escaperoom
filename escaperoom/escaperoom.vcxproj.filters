@@ -51,6 +51,12 @@
     <ClCompile Include="src\unique_items\Backpack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\unique_items\Box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\LockedStorageItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\base\Entity.h">
@@ -84,6 +90,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\unique_items\Backpack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\unique_items\Box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\LockedStorageItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

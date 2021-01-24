@@ -9,6 +9,7 @@
 #include <cereal/archives/binary.hpp> // this has to load before loading item types
 #include "base/Room.h"
 #include "unique_items/Cabinet.h"
+#include "unique_items/Box.h"
 #include "Player.h"
 
 std::shared_ptr<Room> init()
@@ -21,6 +22,11 @@ std::shared_ptr<Room> init()
 	cabinet->movedMessage = "Elhúztad a szekrényt. Mögötte a falon egy ablakot látsz.";
 	cabinet->alreadyMovedMessage = "Már elhúztad a szekrényt. Egy ablak volt mögötte.";
 
+	auto box = std::make_shared<Box>("doboz", "Egy apró fémdoboz. Mintha csörögne benne valami.");
+	box->unlockedMessage = "Kinyitottad a dobozt. Egy kulcs volt benne.";
+	box->alreadyUnlockedMessage = "Már nyitva van a doboz.";
+
+	cabinet->addItemInside(box, "Egy fényes doboz van a szekrény aljában.");
 
 	livingRoom->addItemInside(cabinet, "A fal mellett egy szekrény áll.");
 	return livingRoom;
