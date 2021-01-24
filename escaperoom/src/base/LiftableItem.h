@@ -15,5 +15,3 @@ public:
 		ar(cereal::virtual_base_class<Item>(this));
 	}
 };
-
-CEREAL_REGISTER_TYPE(LiftableItem);

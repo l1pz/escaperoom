@@ -36,5 +36,3 @@ public:
 	void unlock() override;
 	bool isLockable() override { return true; }
 };
-
-CEREAL_REGISTER_TYPE(LockedItem);

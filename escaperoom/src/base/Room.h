@@ -20,6 +20,7 @@ private:
 	static std::unordered_map<Direction, std::string> _directionToString;
 
 public:
+	Room() = default;
 	Room(const std::string& name, const std::string& description);
 	template <class Archive>
 	void serialize(Archive& ar)

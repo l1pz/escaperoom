@@ -14,7 +14,7 @@ std::unordered_map<Room::Direction, std::string> Room::_directionToString{
 Room::Room(const std::string& name, const std::string& description)
 {
 	setName(name);
-	setDescription(name);
+	setDescription(description);
 }
 
 void Room::addExit(const Direction direction, std::shared_ptr<Room> exit)

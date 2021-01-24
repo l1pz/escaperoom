@@ -38,5 +38,3 @@ public:
 	bool isBreakable() override { return true; }
 };
 
-CEREAL_REGISTER_TYPE(BreakableItem);
-

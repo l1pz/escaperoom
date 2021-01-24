@@ -32,5 +32,3 @@ public:
 	void move() override;
 	bool isMovable() override { return true; }
 };
-
-CEREAL_REGISTER_TYPE(MovableItem);

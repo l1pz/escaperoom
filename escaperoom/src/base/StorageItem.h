@@ -30,5 +30,3 @@ public:
 	std::vector<std::string> getItemList() override;
 	bool isStorage() override { return true; }
 };
-
-CEREAL_REGISTER_TYPE(StorageItem);
