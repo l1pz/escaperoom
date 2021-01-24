@@ -22,17 +22,17 @@ public:
 private:
 	void _break();
 
-public:
+protected:
 	BreakableItem() = default;
-	using Item::Item;
-	
+	BreakableItem(std::shared_ptr<Item> tool);
+
+public:
 	template <class Archive>
 	void serialize(Archive& ar)
 	{
 		ar(cereal::virtual_base_class<Item>(this), _broken, _tool);
 	}
 	
-	BreakableItem(std::string_view name, std::string_view description, std::shared_ptr<Item> tool);
 	void breakIt(const Item & tool) override; // can't use break since it's a reserved keyword
 	void breakIt() override;
 	bool isBreakable() override { return true; }

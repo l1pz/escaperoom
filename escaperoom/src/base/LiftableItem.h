@@ -7,7 +7,6 @@ class LiftableItem :
 	public virtual Item
 {
 public:
-	using Item::Item;
 	std::optional<std::shared_ptr<Item>> removeItem(const std::string& name) override;
 	bool isLiftable() override { return true; }
 	template <class Archive>

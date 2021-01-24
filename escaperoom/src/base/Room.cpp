@@ -10,6 +10,13 @@ std::unordered_map<Room::Direction, std::string> Room::_directionToString{
 	{Direction::WEST, "nyugatra"},
 	{Direction::NORTH, "északra"},
 };
+
+Room::Room(const std::string& name, const std::string& description)
+{
+	setName(name);
+	setDescription(name);
+}
+
 void Room::addExit(const Direction direction, std::shared_ptr<Room> exit)
 {
 	assert(_exits.count(direction) == 0);

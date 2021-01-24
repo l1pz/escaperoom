@@ -14,16 +14,15 @@ protected:
 	std::unordered_map<std::string, std::string> _itemDescriptions{};
 
 protected:
+	StorageItem() = default;
 	void checkContainedItems();
 
 public:
-	using Item::Item;
 	template <class Archive>
 	void serialize(Archive& ar)
 	{
 		ar(cereal::virtual_base_class<Item>(this), _items, _itemDescriptions);
 	}
-	StorageItem() = default;
 	void check() override;
 	std::optional<std::shared_ptr<Item>> removeItem(const std::string& name) override;
 	std::optional<std::shared_ptr<Item>> getItem(const std::string& name) override;

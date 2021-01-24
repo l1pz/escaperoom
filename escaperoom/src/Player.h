@@ -10,7 +10,7 @@ class Player
 {
 private:
 	std::shared_ptr<Room> _currentRoom;
-	StorageItem _backpack{"backpack", "backpack"};
+	StorageItem _backpack{};
 
 private:
 	std::unordered_map<std::string,

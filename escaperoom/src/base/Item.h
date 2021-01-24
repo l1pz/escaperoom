@@ -1,20 +1,36 @@
 #pragma once
-#include "Entity.h"
-#include <cereal/types/base_class.hpp>
+#include <cereal/types/string.hpp>
 #include <optional>
 class Item :
-	public Entity,
 	public std::enable_shared_from_this<Item>
 {
+
+protected:
+	std::string _name;
+	std::string _description;
+
+protected:
+	void setName(const std::string& name) { _name = name; }
+	void setDescription(const std::string& description) { _description = description; }
+	
 public:
-	using Entity::Entity;
-	bool operator==(const Item& rhs) const { return this->name() == rhs.name(); }
+	Item() = default;
+	Item(const std::string_view name, const std::string_view description) :
+		_name{ name }, _description{ description }
+	{
+	}
+	
+	bool operator==(const Item& rhs) const { return this->_name == rhs._name; }
 
 	template <class Archive>
-	void serialize(Archive& ar)
-	{
-		ar(cereal::base_class<Entity>(this));
+	void serialize(Archive& ar) {
+		ar(_name, _description);
 	}
+
+	const std::string& name() const { return _name; }
+	const std::string& description() const { return _description; }
+	
+	virtual void check();
 
 	virtual void addItemInside(std::shared_ptr<Item> item, std::string_view description)
 	{

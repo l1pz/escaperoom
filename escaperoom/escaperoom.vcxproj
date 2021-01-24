@@ -86,6 +86,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\unique_items\Cabinet.cpp" />
     <ClCompile Include="src\base\BreakableItem.cpp" />
     <ClCompile Include="src\base\MovableItem.cpp" />
     <ClCompile Include="src\Player.cpp" />
@@ -98,6 +99,7 @@
     <ClCompile Include="src\base\StorageItem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\unique_items\Cabinet.h" />
     <ClInclude Include="src\base\BreakableItem.h" />
     <ClInclude Include="src\base\MovableItem.h" />
     <ClInclude Include="src\Player.h" />

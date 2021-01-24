@@ -56,7 +56,7 @@ void Player::_pickup(const std::vector<std::string>& items)
 		{
 			if (result.value()->isLiftable())
 			{
-				_backpack.addItem(_currentRoom->removeItem(items[0]).value(), "");
+				_backpack.addItemInside(_currentRoom->removeItem(items[0]).value(), "");
 				std::cout << "Felvetted ezt: " << result.value()->name() << ".";
 			}
 			else
@@ -94,7 +94,7 @@ void Player::_putdown(const std::vector<std::string>& items)
 		auto result{_backpack.getItem(items[0])};
 		if (result.has_value())
 		{
-			_currentRoom->addItem(_backpack.removeItem(items[0]).value(), "Ez van a földön: " + items[0] + ".");
+			_currentRoom->addItemInside(_backpack.removeItem(items[0]).value(), "Ez van a földön: " + items[0] + ".");
 			std::cout << "Letetted ezt: " << result.value()->name() << ".";
 		}
 		else

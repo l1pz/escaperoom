@@ -26,11 +26,6 @@ MovableItem::MovableItem(std::shared_ptr<Room> room) : _room{std::move(room)}
 {
 }
 
-MovableItem::MovableItem(const std::string_view name, const std::string_view description, std::shared_ptr<Room> room) :
-	Item{ name, description }, _room{ std::move(room) }
-{
-}
-
 void MovableItem::addItemBehind(std::shared_ptr<Item> item, const std::string_view descriptionAfterMoved,
                           const std::string_view descriptionMoved)
 {

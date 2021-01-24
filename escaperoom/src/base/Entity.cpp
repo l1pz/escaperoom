@@ -5,5 +5,5 @@ class Item;
 
 void Entity::check()
 {
-	std::cout << _description;
+	
 }

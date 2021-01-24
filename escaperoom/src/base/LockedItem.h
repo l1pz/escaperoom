@@ -25,6 +25,7 @@ public:
 	LockedItem() = default;
 	using Item::Item;
 	LockedItem(std::string_view name, std::string_view description, std::shared_ptr<Item> key);
+	explicit LockedItem(std::shared_ptr<Item> key);
 	template <class Archive>
 	void serialize(Archive& ar)
 	{
