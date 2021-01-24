@@ -1,12 +1,10 @@
 #pragma once
-#include "../base/LockedItem.h"
-#include "../base/StorageItem.h"
+#include "../base/LockedStorageItem.h"
 #include "../base/MovableItem.h"
 #include <cereal/types/polymorphic.hpp>
 class Cabinet :
 	public MovableItem,
-	public LockedItem,
-	public StorageItem
+	public LockedStorageItem
 {
 public:
 	Cabinet() = default;
@@ -15,9 +13,8 @@ public:
 	template <class Archive>
 	void serialize(Archive& ar)
 	{
-		ar(cereal::base_class<MovableItem>(this), cereal::base_class<LockedItem>(this), cereal::base_class<StorageItem>(this));
+		ar(cereal::base_class<MovableItem>(this), cereal::base_class<LockedStorageItem>(this));
 	}
-	void check() override;
 };
 
 CEREAL_REGISTER_TYPE(Cabinet);

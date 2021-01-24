@@ -9,15 +9,3 @@ Cabinet::Cabinet(const std::string_view name, const std::string_view description
 	: Item{ name, description }, MovableItem { std::move(room) }
 {
 }
-
-void Cabinet::check()
-{
-	if (isUnlocked())
-	{
-		StorageItem::check();
-	}
-	else
-	{
-		LockedItem::check();
-	}
-}
