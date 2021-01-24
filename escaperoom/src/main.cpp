@@ -18,7 +18,7 @@ std::shared_ptr<Room> init()
 {
 	auto livingRoom = std::make_shared<Room>("nappali", "Egy nappaliban állok.");
 
-	/*auto cabinet = std::make_shared<Cabinet>("szekrény", "Egy fenyõ szekrény rajta matricákkal.", livingRoom);
+	auto cabinet = std::make_shared<Cabinet>("szekrény", "Egy fenyõ szekrény rajta matricákkal.", livingRoom);
 	cabinet->unlockedMessage = "Kinyitottad a szekrényt. Egy dobozt látsz benne.";
 	cabinet->alreadyUnlockedMessage = "Már ki van nyitva a szekrény.";
 	cabinet->movedMessage = "Elhúztad a szekrényt. Mögötte a falon egy ablakot látsz.";
@@ -29,7 +29,7 @@ std::shared_ptr<Room> init()
 	box->alreadyUnlockedMessage = "Már nyitva van a doboz.";
 
 	cabinet->addItemInside(box, "Egy fényes doboz van a szekrény aljában.");
-	*/
+	
 	const auto key = std::make_shared<Key>("kulcs", "Egy régi rozsdás kulcs.");
 	livingRoom->addItemInside(key, "Egy kulcs van benne.");
 	
@@ -41,12 +41,12 @@ std::shared_ptr<Room> init()
 
 	livingRoom->addItemInside(door, "Egy ajtót látsz nyugatra.");
 
-	/*auto bathroom = std::make_shared<Room>("fürdõszoba", "Egy fürdõszobában állok, falát csúnya rózsaszín csempe borítja.");
+	auto bathroom = std::make_shared<Room>("fürdõszoba", "Egy fürdõszobában állok, falát csúnya rózsaszín csempe borítja.");
 	livingRoom->addExit({ Room::Direction::WEST, bathroom, [door]() {return door->isUnlocked(); } });
 	bathroom->addExit({ Room::Direction::EAST, livingRoom });
 	
 
-	livingRoom->addItemInside(cabinet, "A fal mellett egy szekrény áll.");*/
+	livingRoom->addItemInside(cabinet, "A fal mellett egy szekrény áll.");
 	return livingRoom;
 }
 
