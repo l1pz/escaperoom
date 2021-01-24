@@ -24,7 +24,9 @@ private:
 
 protected:
 	BreakableItem() = default;
-	BreakableItem(std::shared_ptr<Item> tool);
+	explicit BreakableItem(std::shared_ptr<Item> tool);
+	BreakableItem(std::string_view name, std::string_view description, std::shared_ptr<Item> tool);
+	using Item::Item;
 
 public:
 	template <class Archive>

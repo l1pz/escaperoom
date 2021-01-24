@@ -20,6 +20,11 @@ BreakableItem::BreakableItem(std::shared_ptr<Item> tool)
 {
 }
 
+BreakableItem::BreakableItem(const std::string_view name, const std::string_view description, std::shared_ptr<Item> tool)
+	: Item{name, description}, _tool{std::move(tool)}
+{
+}
+
 void BreakableItem::breakIt(const Item& tool)
 {
 	if (tool.name() == _tool->name())

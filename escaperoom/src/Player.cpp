@@ -298,7 +298,7 @@ void Player::_save(const std::vector<std::string>& items)
 	}
 	catch (const cereal::Exception& e)
 	{
-		std::cout << "Nem sikerült a mentés.";
+		std::cout << "Nem sikerült a mentés." << std::endl << e.what();
 	}
 	
 }

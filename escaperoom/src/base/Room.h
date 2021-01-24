@@ -20,6 +20,11 @@ public:
 		Direction direction{};
 		std::shared_ptr<Room> room{};
 		std::function<bool()> isVisible{ []() {return true; } };
+		template <class Archive>
+		void serialize(Archive& ar)
+		{
+			ar(direction, room);
+		}
 	};
 
 private:
@@ -28,7 +33,7 @@ private:
 
 public:
 	Room() = default;
-	Room(const std::string& name, const std::string& description);
+	using StorageItem::StorageItem;
 	template <class Archive>
 	void serialize(Archive& ar)
 	{

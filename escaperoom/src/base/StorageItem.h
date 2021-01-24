@@ -15,6 +15,7 @@ protected:
 
 protected:
 	StorageItem() = default;
+	using Item::Item;
 	void checkContainedItems();
 
 public:

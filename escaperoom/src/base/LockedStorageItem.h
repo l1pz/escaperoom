@@ -6,9 +6,11 @@ class LockedStorageItem :
 	virtual public LockedItem,
 	virtual public StorageItem
 {
-public:
+protected:
 	LockedStorageItem() = default;
-	explicit LockedStorageItem(std::shared_ptr<Item> key);
+	using LockedItem::LockedItem;
+	
+public:
 	template <class Archive>
 	void serialize(Archive& ar)
 	{

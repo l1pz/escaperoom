@@ -14,10 +14,14 @@ protected:
 	void setDescription(const std::string& description) { _description = description; }
 	
 public:
-	Item() = default;
+	Item()
+	{
+		std::cout << "default item constructor called";
+	};
 	Item(const std::string_view name, const std::string_view description) :
 		_name{ name }, _description{ description }
 	{
+		std::cout << "item initialized: " << _name << std::endl;
 	}
 	
 	bool operator==(const Item& rhs) const { return this->_name == rhs._name; }

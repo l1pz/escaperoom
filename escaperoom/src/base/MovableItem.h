@@ -20,6 +20,8 @@ public:
 protected: 
 	MovableItem() = default;
 	explicit MovableItem(std::shared_ptr<Room> room);
+	MovableItem(std::string_view name, std::string_view description, std::shared_ptr<Room> room);
+
 public:
 	template <class Archive>
 	void serialize(Archive& ar)

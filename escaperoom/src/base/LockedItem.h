@@ -13,24 +13,24 @@ private:
 	void _unlock();
 
 public:
+	LockedItem() = default;
+	explicit LockedItem(std::shared_ptr<Item> key);
+	LockedItem(std::string_view name, std::string_view description, std::shared_ptr<Item> key);
+	using Item::Item;
+
+public:
 	std::string unlockedMessage{ "Sikerült kinyitni." };
 	std::string alreadyUnlockedMessage{ "Ezt már egyszer kinyitottam." };
 	std::string needKeyMessage{ "Ennek a kinyitásához valami tárgyra van szükségem." };
 	std::string wrongKeyMessage{ "Ezt nem ezzel a tárggyal kell kinyitni." };
 
-protected:
-	bool isUnlocked() const { return _unlocked; }
-
 public:
-	LockedItem() = default;
-	using Item::Item;
-	LockedItem(std::string_view name, std::string_view description, std::shared_ptr<Item> key);
-	explicit LockedItem(std::shared_ptr<Item> key);
 	template <class Archive>
 	void serialize(Archive& ar)
 	{
 		ar(cereal::virtual_base_class<Item>(this), _unlocked, _key);
 	}
+	bool isUnlocked() const { return _unlocked; }
 	void check() override;
 	void unlock(const Item& key) override;
 	void unlock() override;

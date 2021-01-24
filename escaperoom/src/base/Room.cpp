@@ -11,11 +11,7 @@ std::unordered_map<Room::Direction, std::string> Room::_directionToString{
 	{Direction::NORTH, "északra"},
 };
 
-Room::Room(const std::string& name, const std::string& description)
-{
-	setName(name);
-	setDescription(description);
-}
+
 
 void Room::addExit(Exit exit)
 {
