@@ -32,7 +32,7 @@ public:
 	template <class Archive>
 	void serialize(Archive& ar)
 	{
-		ar(cereal::virtual_base_class<Item>(this), _broken, _tool);
+		ar(cereal::virtual_base_class<Item>(this), _broken, _tool, brokeMessage, alreadyBrokeMessage, wrongToolMessage, needToolMessage);
 	}
 	
 	void breakIt(const Item & tool) override; // can't use break since it's a reserved keyword
