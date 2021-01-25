@@ -14,15 +14,17 @@ protected:
 	std::unordered_map<std::string, std::string> _itemDescriptions{};
 
 protected:
-	StorageItem() = default;
 	using Item::Item;
 	void checkContainedItems();
+
+public:
+	std::string emptyMessage{ "A belseje üres." };
 
 public:
 	template <class Archive>
 	void serialize(Archive& ar)
 	{
-		ar(cereal::virtual_base_class<Item>(this), _items, _itemDescriptions);
+		ar(cereal::virtual_base_class<Item>(this), _items, _itemDescriptions, emptyMessage);
 	}
 	void check() override;
 	std::optional<std::shared_ptr<Item>> removeItem(const std::string& name) override;

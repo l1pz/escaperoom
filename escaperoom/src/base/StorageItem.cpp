@@ -9,13 +9,16 @@ void StorageItem::checkContainedItems()
 	{
 		std::cout << std::endl << itemDesc;
 	}
+	if (_items.empty())
+	{
+		std::cout << std::endl << emptyMessage;
+	}
 }
 
 void StorageItem::check()
 {
 	Item::check();
-	checkContainedItems();
-	
+	checkContainedItems();	
 }
 
 std::optional<std::shared_ptr<Item>> StorageItem::removeItem(const std::string& name)
