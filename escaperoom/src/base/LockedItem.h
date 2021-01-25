@@ -23,12 +23,13 @@ public:
 	std::string alreadyUnlockedMessage{ "Ezt már egyszer kinyitottam." };
 	std::string needKeyMessage{ "Ennek a kinyitásához valami tárgyra van szükségem." };
 	std::string wrongKeyMessage{ "Ezt nem ezzel a tárggyal kell kinyitni." };
+	std::string noNeedKeyMessage{ "Nem szükséges más tárgy, hogy kinyissam." };
 
 public:
 	template <class Archive>
 	void serialize(Archive& ar)
 	{
-		ar(cereal::virtual_base_class<Item>(this), _unlocked, _key);
+		ar(cereal::virtual_base_class<Item>(this), _unlocked, _key, unlockedMessage, alreadyUnlockedMessage, needKeyMessage, wrongKeyMessage, noNeedKeyMessage);
 	}
 	bool isUnlocked() const { return _unlocked; }
 	void check() override;

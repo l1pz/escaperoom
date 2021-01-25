@@ -62,12 +62,20 @@ void LockedItem::check()
 
 void LockedItem::unlock(const Item& key)
 {
-	if (key == *_key)
+	if(_key)
 	{
-		_unlock();
+		if (key == *_key)
+		{
+			_unlock();
+		}
+		else
+		{
+			std::cout << wrongKeyMessage;
+		}
 	}
 	else
 	{
-		std::cout << wrongKeyMessage;
+		std::cout << noNeedKeyMessage;
 	}
+
 }
