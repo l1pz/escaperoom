@@ -9,3 +9,4 @@ Door::Door(const std::string_view name, const std::string_view description)
 	: Item{ name, description }
 {
 }
+

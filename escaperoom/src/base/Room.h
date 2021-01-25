@@ -1,5 +1,6 @@
 #pragma once
 #include "StorageItem.h"
+#include "LockedItem.h"
 #include <functional>
 #include <cereal/types/unordered_map.hpp>
 #include <cereal/types/memory.hpp>
@@ -19,7 +20,8 @@ public:
 	{
 		Direction direction{};
 		std::shared_ptr<Room> room{};
-		std::function<bool()> isVisible{ []() {return true; } };
+		std::shared_ptr<LockedItem> lock;
+		std::string lockedMessage{ "Ez a kijárat be van zárva" };
 		template <class Archive>
 		void serialize(Archive& ar)
 		{
@@ -40,7 +42,7 @@ public:
 		ar(cereal::base_class<StorageItem>(this), _exits);
 	}
 	void addExit(Exit exit);
-	std::optional<std::shared_ptr<Room>> direction(Direction dir);
+	std::optional<std::shared_ptr<Room>> exit(Direction dir);
 	void check() override;
 	// we need getItem function because we have to make sure room doesn't return itself like the rest of the items
 	std::optional<std::shared_ptr<Item>> getItem(const std::string& name) override;

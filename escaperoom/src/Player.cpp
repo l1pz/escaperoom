@@ -255,15 +255,10 @@ void Player::_direction(const std::vector<std::string>& items, Room::Direction d
 	}
 	else
 	{
-		auto newRoom = _currentRoom->direction(dir);
+		auto newRoom = _currentRoom->exit(dir);
 		if(newRoom.has_value())
 		{
-			std::cout << "Átmentél az kijáraton " << Room::directionToString(dir) << ".";
 			_currentRoom = newRoom.value();
-		}
-		else
-		{
-			std::cout << "Ebben az irányban nincs kijárat.";
 		}
 	}
 }
