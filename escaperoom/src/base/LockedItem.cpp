@@ -36,7 +36,14 @@ void LockedItem::unlock()
 	}
 	else
 	{
-		std::cout << needKeyMessage;
+		if(_unlocked)
+		{
+			std::cout << alreadyUnlockedMessage;
+		}
+		else
+		{
+			std::cout << needKeyMessage;
+		}
 	}
 }
 

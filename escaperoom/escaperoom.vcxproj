@@ -86,6 +86,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\unique_items\Bathtub.cpp" />
     <ClCompile Include="src\unique_items\Door.cpp" />
     <ClCompile Include="src\unique_items\Key.cpp" />
     <ClCompile Include="src\base\LockedStorageItem.cpp" />
@@ -104,6 +105,7 @@
     <ClCompile Include="src\base\StorageItem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\unique_items\Bathtub.h" />
     <ClInclude Include="src\unique_items\Door.h" />
     <ClInclude Include="src\unique_items\Key.h" />
     <ClInclude Include="src\base\LockedStorageItem.h" />
