@@ -25,7 +25,7 @@ public:
 		template <class Archive>
 		void serialize(Archive& ar)
 		{
-			ar(direction, room);
+			ar(direction, room, lock, lockedMessage);
 		}
 	};
 
