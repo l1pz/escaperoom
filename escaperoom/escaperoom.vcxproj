@@ -104,6 +104,7 @@
     <ClCompile Include="src\base\Entity.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\base\StorageItem.cpp" />
+    <ClCompile Include="src\unique_items\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\unique_items\Crowbar.h" />
@@ -123,6 +124,7 @@
     <ClInclude Include="src\base\Room.h" />
     <ClInclude Include="src\base\Entity.h" />
     <ClInclude Include="src\base\StorageItem.h" />
+    <ClInclude Include="src\unique_items\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

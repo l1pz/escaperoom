@@ -15,16 +15,18 @@
 #include "Player.h"
 #include "unique_items/Bathtub.h"
 #include "unique_items/Crowbar.h"
+#include "unique_items/Window.h"
 
 std::shared_ptr<Room> init()
 {
 	auto livingRoom = std::make_shared<Room>("nappali", "Egy nappaliban állok.");
 	auto bathroom = std::make_shared<Room>("fürdõszoba", "Egy fürdõszobában állok, a falát csúnya rózsaszín csempe borítja.\nKeletre egy kijárat van a nappaliba.");
+	auto outside = std::make_shared<Room>("udvar", "Kijutottam.");
 	
 	auto cabinet = std::make_shared<Cabinet>("szekrény", "Egy fenyõ szekrény rajta matricákkal.", livingRoom);
 	cabinet->unlockedMessage = "Kinyitottad a szekrényt. Egy dobozt látsz benne.";
 	cabinet->alreadyUnlockedMessage = "Már ki van nyitva a szekrény.";
-	cabinet->movedMessage = "Elhúztad a szekrényt. Mögötte a falon egy ablakot látsz.";
+	cabinet->movedMessage = "Elhúztad a szekrényt.";
 	cabinet->alreadyMovedMessage = "Már elhúztad a szekrényt. Egy ablak volt mögötte.";
 
 	auto box = std::make_shared<Box>("doboz", "Egy apró fémdoboz.");
@@ -47,9 +49,20 @@ std::shared_ptr<Room> init()
 
 	const auto crowbar = std::make_shared<Crowbar>("feszítõvas", "Egy piros feszítõvas. Pont mint Gordon Freemané.");
 
+	const auto window = std::make_shared<Window>("ablak", "Egy ablak, amin keresztül talán kijuthatnék.", std::make_shared<Item>(), crowbar);
+	window->alreadyBrokeMessage = "Már be van törve az ablak.";
+	window->needToolMessage = "Az üveg megvágná a kezem. Szükségem van valamire, hogy betörjem.";
+	window->brokeMessage = "Sikerült betörni az ablakot.";
+	window->wrongToolMessage = "Ezzel nem tudom betörni az ablakot.";
+	window->needKeyMessage = "Az ablak be van szorulva. Nem tudom kinyitni.";
+	window->wrongKeyMessage = "Az ablak be van szorulva. Nem tudom kinyitni ezzel a tárggyal.";
+
+	cabinet->addItemBehind(window, "Egy ablak van az északi falon.", "Mögötte a falon egy ablakot látsz.");
+
 	bathtub->addItemInside(crowbar, "Egy feszítõvas van benne.");
 	
 	livingRoom->addExit({ Room::Direction::WEST, bathroom, door });
+	livingRoom->addExit({ Room::Direction::NORTH, outside, window });
 	bathroom->addExit({ Room::Direction::EAST, livingRoom });
 
 	bathroom->addItemInside(bathtub, "Egy kád áll a sarokban.");

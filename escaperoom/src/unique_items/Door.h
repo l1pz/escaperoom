@@ -14,6 +14,7 @@ public:
 	{
 		ar(cereal::base_class<LockedItem>(this));
 	}
+	bool exitCondition() override;
 };
 
 CEREAL_REGISTER_TYPE(Door);
