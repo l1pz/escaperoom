@@ -13,29 +13,19 @@ void BreakableItem::_break()
 	{
 		std::cout << alreadyBrokeMessage;
 	}
+
 }
 
 BreakableItem::BreakableItem(std::shared_ptr<Item> tool)
-	: _tool{std::move(tool)}
+	: _tool{ std::move(tool) }
 {
 }
 
 BreakableItem::BreakableItem(const std::string_view name, const std::string_view description, std::shared_ptr<Item> tool)
-	: Item{name, description}, _tool{std::move(tool)}
+	: Item{ name, description }, _tool{ std::move(tool) }
 {
 }
 
-void BreakableItem::breakIt(const Item& tool)
-{
-	if (tool.name() == _tool->name())
-	{
-		_break();
-	}
-	else
-	{
-		std::cout << wrongToolMessage;
-	}
-}
 
 void BreakableItem::breakIt()
 {
@@ -45,6 +35,42 @@ void BreakableItem::breakIt()
 	}
 	else
 	{
-		std::cout << needToolMessage;
+		if (_broken)
+		{
+			std::cout << alreadyBrokeMessage;
+		}
+		else
+		{
+			std::cout << needToolMessage;
+		}
 	}
+}
+
+void BreakableItem::check()
+{
+	Item::check();
+	if (_broken)
+	{
+		std::cout << " Össze van törve.";
+	}
+}
+
+void BreakableItem::breakIt(const Item& tool)
+{
+	if (_tool)
+	{
+		if (tool == *_tool)
+		{
+			_break();
+		}
+		else
+		{
+			std::cout << wrongToolMessage;
+		}
+	}
+	else
+	{
+		std::cout << noNeedToolMessage;
+	}
+
 }

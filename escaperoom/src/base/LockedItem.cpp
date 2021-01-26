@@ -24,7 +24,6 @@ LockedItem::LockedItem(std::shared_ptr<Item> key)
 LockedItem::LockedItem(const std::string_view name, const std::string_view description, std::shared_ptr<Item> key)
 	: Item{name, description}, _key{std::move(key)}
 {
-	std::cout << "locked item initialized: " << _name;
 }
 
 

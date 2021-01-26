@@ -51,6 +51,8 @@ public:
 	virtual bool isMovable() { return false; }
 	virtual bool isBreakable() { return false; }
 
+	virtual bool exitCondition() { return false; }
+
 	virtual void unlock(const Item& key)
 	{
 	}
