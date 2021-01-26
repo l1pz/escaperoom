@@ -17,14 +17,13 @@ void Room::addExit(Exit exit)
 {
 	assert(_exits.count(exit.direction) == 0);
 	_exits[exit.direction] = std::move(exit);
-	
 }
 
 std::optional<std::shared_ptr<Room>> Room::exit(const Direction dir)
 {
 	if (_exits.count(dir))
 	{
-		if(!_exits[dir].lock || _exits[dir].lock->isUnlocked())
+		if(!_exits[dir].lock || _exits[dir].lock->exitCondition())
 		{
 			std::cout << "Átmentél az kijáraton " << Room::directionToString(dir) << ".";
 			return _exits[dir].room;

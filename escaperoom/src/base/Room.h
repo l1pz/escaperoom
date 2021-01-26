@@ -20,7 +20,7 @@ public:
 	{
 		Direction direction{};
 		std::shared_ptr<Room> room{};
-		std::shared_ptr<LockedItem> lock;
+		std::shared_ptr<Item> lock;
 		std::string lockedMessage{ "Ez a kijárat be van zárva" };
 		template <class Archive>
 		void serialize(Archive& ar)
