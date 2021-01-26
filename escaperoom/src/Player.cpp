@@ -260,6 +260,7 @@ void Player::_direction(const std::vector<std::string>& items, Room::Direction d
 		{
 			_currentRoom = newRoom.value();
 		}
+
 	}
 }
 

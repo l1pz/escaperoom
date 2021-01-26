@@ -14,6 +14,7 @@
 #include "unique_items/Key.h"
 #include "Player.h"
 #include "unique_items/Bathtub.h"
+#include "unique_items/Crowbar.h"
 
 std::shared_ptr<Room> init()
 {
@@ -29,11 +30,12 @@ std::shared_ptr<Room> init()
 	auto box = std::make_shared<Box>("doboz", "Egy apró fémdoboz.");
 	box->unlockedMessage = "Kinyitottad a dobozt. Egy kulcs volt benne.";
 	box->alreadyUnlockedMessage = "Már nyitva van a doboz.";
+	box->noNeedKeyMessage = "A kinyitáshoz nem kell kulcs, elég ha lepattintom a tetejét.";
 
 	cabinet->addItemInside(box, "Egy fényes doboz van a szekrény aljában.");
 	
 	const auto key = std::make_shared<Key>("kulcs", "Egy régi rozsdás kulcs.");
-	livingRoom->addItemInside(key, "Egy kulcs van benne.");
+	box->addItemInside(key, "Egy kulcs van benne.");
 	
 	const auto door = std::make_shared<Door>("ajtó", "Egy fehér fa ajtó.", key);
 	door->needKeyMessage = "Az ajtó kulcsra van zárva.";
@@ -42,6 +44,10 @@ std::shared_ptr<Room> init()
 	door->unlockedMessage = "A kulcs elfordult a zárban, az ajtó kinyílt.";
 
 	auto bathtub = std::make_shared<Bathtub>("kád", "Egy fehér zománcozott fürdõkád.");
+
+	const auto crowbar = std::make_shared<Crowbar>("feszítõvas", "Egy piros feszítõvas. Pont mint Gordon Freemané.");
+
+	bathtub->addItemInside(crowbar, "Egy feszítõvas van benne.");
 	
 	livingRoom->addExit({ Room::Direction::WEST, bathroom, door });
 	bathroom->addExit({ Room::Direction::EAST, livingRoom });

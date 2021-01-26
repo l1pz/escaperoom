@@ -1,10 +1,11 @@
 #pragma once
 #include "../base/LiftableItem.h"
-class Key :
+
+class Crowbar :
 	public LiftableItem
 {
 public:
-	Key() = default;
+	Crowbar() = default;
 	using LiftableItem::LiftableItem;
 	template <class Archive>
 	void serialize(Archive& ar)
@@ -13,6 +14,4 @@ public:
 	}
 };
 
-CEREAL_REGISTER_TYPE(Key);
-
-
+CEREAL_REGISTER_TYPE(Crowbar)

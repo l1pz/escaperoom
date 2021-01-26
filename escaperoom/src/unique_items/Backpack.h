@@ -9,7 +9,7 @@ public:
 	template <class Archive>
 	void serialize(Archive& ar)
 	{
-		ar(cereal::virtual_base_class<StorageItem>(this));
+		ar(cereal::base_class<StorageItem>(this));
 	}
 };
 
