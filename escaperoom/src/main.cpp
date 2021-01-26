@@ -1,5 +1,4 @@
 #include <locale>
-#include <fstream>
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -12,16 +11,16 @@
 #include "unique_items/Box.h"
 #include "unique_items/Door.h"
 #include "unique_items/Key.h"
-#include "Player.h"
 #include "unique_items/Bathtub.h"
 #include "unique_items/Crowbar.h"
 #include "unique_items/Window.h"
+#include "Player.h"
 
 std::shared_ptr<Room> init()
 {
 	auto livingRoom = std::make_shared<Room>("nappali", "Egy nappaliban állok.");
 	auto bathroom = std::make_shared<Room>("fürdõszoba", "Egy fürdõszobában állok, a falát csúnya rózsaszín csempe borítja.\nKeletre egy kijárat van a nappaliba.");
-	auto outside = std::make_shared<Room>("udvar", "Kijutottam.");
+	auto outside = std::make_shared<Room>("udvar", "Kijutottam.", true);
 	
 	auto cabinet = std::make_shared<Cabinet>("szekrény", "Egy fenyõ szekrény rajta matricákkal.", livingRoom);
 	cabinet->unlockedMessage = "Kinyitottad a szekrényt. Egy dobozt látsz benne.";

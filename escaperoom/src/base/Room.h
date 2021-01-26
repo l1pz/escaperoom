@@ -32,10 +32,13 @@ public:
 private:
 	std::unordered_map<Direction, Exit> _exits;
 	static std::unordered_map<Direction, std::string> _directionToString;
+	bool _escapeRoom;
 
 public:
 	Room() = default;
-	using StorageItem::StorageItem;
+	Room(std::string_view name, std::string_view description);
+	Room(std::string_view name, std::string_view description, bool escapeRoom);
+	
 	template <class Archive>
 	void serialize(Archive& ar)
 	{
@@ -47,4 +50,5 @@ public:
 	// we need getItem function because we have to make sure room doesn't return itself like the rest of the items
 	std::optional<std::shared_ptr<Item>> getItem(const std::string& name) override;
 	static std::string directionToString(Direction dir);
+	bool isEscapeRoom() const;
 };

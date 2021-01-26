@@ -259,6 +259,11 @@ void Player::_direction(const std::vector<std::string>& items, Room::Direction d
 		if(newRoom.has_value())
 		{
 			_currentRoom = newRoom.value();
+			if(_currentRoom->isEscapeRoom())
+			{
+				std::cout << std::endl << "Gratulálunk! Sikerült megszöknöd." << std::endl;
+				std::exit(0);
+			}
 		}
 
 	}

@@ -12,6 +12,15 @@ std::unordered_map<Room::Direction, std::string> Room::_directionToString{
 };
 
 
+Room::Room(const std::string_view name, const std::string_view description)
+	: Item{ name, description }, _escapeRoom{false}
+{
+}
+
+Room::Room(const std::string_view name, const std::string_view description, const bool escapeRoom)
+	:	Item{name, description}, _escapeRoom{escapeRoom}
+{
+}
 
 void Room::addExit(Exit exit)
 {
@@ -64,4 +73,9 @@ std::optional<std::shared_ptr<Item>> Room::getItem(const std::string& name)
 std::string Room::directionToString(const Direction dir)
 {
 	return _directionToString[dir];
+}
+
+bool Room::isEscapeRoom() const
+{
+	return _escapeRoom;
 }
