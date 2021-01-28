@@ -325,7 +325,7 @@ void Player::_load(const std::vector<std::string>& items)
 	}
 	catch (const cereal::Exception& e)
 	{
-		std::cout << "Nem sikerült a betöltés.";
+		std::cout << "Nem sikerült a betöltés." << std::endl << e.what();
 	}
 }
 
