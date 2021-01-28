@@ -101,7 +101,6 @@
     <ClCompile Include="src\base\LiftableItem.cpp" />
     <ClCompile Include="src\base\Item.cpp" />
     <ClCompile Include="src\base\Room.cpp" />
-    <ClCompile Include="src\base\Entity.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\base\StorageItem.cpp" />
     <ClCompile Include="src\unique_items\Window.cpp" />
@@ -122,7 +121,6 @@
     <ClInclude Include="src\base\LiftableItem.h" />
     <ClInclude Include="src\base\Item.h" />
     <ClInclude Include="src\base\Room.h" />
-    <ClInclude Include="src\base\Entity.h" />
     <ClInclude Include="src\base\StorageItem.h" />
     <ClInclude Include="src\unique_items\Window.h" />
   </ItemGroup>
