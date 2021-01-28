@@ -202,7 +202,7 @@ void Player::_move(const std::vector<std::string>& items) const
 
 void Player::_break(const std::vector<std::string>& items)
 {
-	if (items.empty()) std::cout << "Mit törjek össze ki?";
+	if (items.empty()) std::cout << "Mit törjek össze?";
 	else if (items.size() > 2) std::cout << "Ennyi tárggyal nem tudok mit kezdeni.";
 	else
 	{
