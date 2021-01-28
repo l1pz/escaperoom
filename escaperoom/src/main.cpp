@@ -20,7 +20,7 @@ std::shared_ptr<Room> init()
 {
 	auto livingRoom = std::make_shared<Room>("nappali", "Egy nappaliban állok.");
 	auto bathroom = std::make_shared<Room>("fürdõszoba", "Egy fürdõszobában állok, a falát csúnya rózsaszín csempe borítja.\nKeletre egy kijárat van a nappaliba.");
-	auto outside = std::make_shared<Room>("udvar", "Kijutottam.", true);
+	const auto outside = std::make_shared<Room>("udvar", "Kijutottam.", true);
 	
 	auto cabinet = std::make_shared<Cabinet>("szekrény", "Egy fenyõ szekrény rajta matricákkal.", livingRoom);
 	cabinet->unlockedMessage = "Kinyitottad a szekrényt. Egy dobozt látsz benne.";
